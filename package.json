@@ -1,0 +1,19 @@
+{
+  "name": "admin-discord-bot",
+  "version": "1.0.0",
+  "description": "A discord bot made to help people take care of their servers",
+  "main": "index.js",
+  "author": "Tiago Schulz Sansão",
+  "license": "none",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "discord.js": "^12.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}
