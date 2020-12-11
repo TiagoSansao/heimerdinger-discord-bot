@@ -1,5 +1,6 @@
 import Discord from 'discord.js';
 import axios from 'axios';
+import {} from 'dotenv/config.js';
 
 const client = new Discord.Client();
 
@@ -23,4 +24,4 @@ client.on('message', async (msg) => {
   }
 });
 
-client.login('Nzg1NTMyMDc1MzM1MDkwMTc2.X85NwQ.ou9VYtjUrI4hAh-fBj2eMmZe-f8');
+client.login(process.env.BOT_TOKEN);
