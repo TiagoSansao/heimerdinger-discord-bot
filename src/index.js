@@ -1,7 +1,8 @@
-import Discord from 'discord.js';
+import Discord, { Message } from 'discord.js';
 import axios from 'axios';
 import {} from 'dotenv/config.js';
 import getFreeWeek from './commands/freeweek.js';
+import getUser from './commands/user.js';
 
 const client = new Discord.Client();
 
@@ -28,6 +29,25 @@ client.on('message', async (msg) => {
     const freeChampions = await getFreeWeek(champions);
     return msg.channel.send(freeChampions);
   }
+
+  if (command === 'user') {
+    const user = await getUser(args[0]);
+    if (user === 'no args')
+      return msg.channel.send(
+        `${msg.author}, you need to give a name. \nExample:  ${prefix}user faker`
+      );
+    else if (user === 'not found')
+      return msg.channel.send(`User ${args[0]} was not found!`);
+    console.log(user);
+    const imgUrl = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${user.profileIconId}.png`;
+    return msg.channel.send(
+      `Data found:\nName: ${user.name}\nLevel: ${user.summonerLevel}\nIcon:`,
+      { files: [imgUrl] }
+    );
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
+
+// make find user function, flags: user, region
+//default region is NA1

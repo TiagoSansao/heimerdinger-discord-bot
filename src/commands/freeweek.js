@@ -1,9 +1,10 @@
 import axios from 'axios';
 import getChampionName from '../utils/getChampionName.js';
+import {} from 'dotenv/config.js';
 
 async function getFreeWeek(champions) {
   const response = await axios.get(
-    `https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${process.env.RIOT_API_KEY}`
+    `${process.env.BASE_URL}/lol/platform/v3/champion-rotations?api_key=${process.env.RIOT_API_KEY}`
   );
   if (!response) return 'Something went wrong, try again later.';
   const FWChampions = response.data.freeChampionIds.map((id) =>
