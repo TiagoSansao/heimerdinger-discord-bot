@@ -31,17 +31,23 @@ client.on('message', async (msg) => {
   }
 
   if (command === 'user') {
-    const user = await getUser(args[0]);
+    const user = await getUser(args[0], champions);
     if (user === 'no args')
       return msg.channel.send(
         `${msg.author}, you need to give a name. \nExample:  ${prefix}user faker`
       );
     else if (user === 'not found')
       return msg.channel.send(`User ${args[0]} was not found!`);
-    console.log(user);
     const imgUrl = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${user.profileIconId}.png`;
     return msg.channel.send(
-      `Data found:\nName: ${user.name}\nLevel: ${user.summonerLevel}\nIcon:`,
+      `Data found:\nName: ${user.name}\nLevel: ${
+        user.summonerLevel
+      }\nTotal mastery: ${user.totalMastery}\n${user.mainChampion
+        .map(
+          (champ) =>
+            `Main: ${champ[0]}, Mastery level: ${champ[1]}, Mastery points: ${champ[2]}`
+        )
+        .join('\n')}\nIcon:`,
       { files: [imgUrl] }
     );
   }
