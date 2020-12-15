@@ -2,7 +2,7 @@ import axios from 'axios';
 import getChampionName from '../utils/getChampionName.js';
 import {} from 'dotenv/config.js';
 
-async function getFreeWeek(champions) {
+async function getFreeWeek(champions, msg) {
   const response = await axios.get(
     `${process.env.BASE_URL}/lol/platform/v3/champion-rotations?api_key=${process.env.RIOT_API_KEY}`
   );
@@ -13,7 +13,7 @@ async function getFreeWeek(champions) {
   const text = `Champions to play for free during this week:\n${FWChampions.join(
     ', '
   )}`;
-  return text;
+  return msg.channel.send(text);
 }
 
 export default getFreeWeek;

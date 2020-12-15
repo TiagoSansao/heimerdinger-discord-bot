@@ -1,8 +1,10 @@
-import Discord, { Message } from 'discord.js';
+import Discord from 'discord.js';
 import axios from 'axios';
 import {} from 'dotenv/config.js';
 import getFreeWeek from './commands/freeweek.js';
 import getUser from './commands/user.js';
+import getServers from './commands/servers.js';
+import getHelp from './commands/help.js';
 
 const client = new Discord.Client();
 
@@ -17,6 +19,9 @@ axios
   .then((response) => (champions = response.data.data));
 
 client.on('ready', () => {
+  client.user.setActivity('Type: ?help and be happy', {
+    type: 'PLAYING',
+  });
   console.log(`Logged as ${client.user.tag}`);
 });
 
@@ -25,48 +30,13 @@ client.on('message', async (msg) => {
   const args = msg.content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
 
-  if (command === 'help') {
-    const help = `Hello, here are my commands, use it wisely.\n${prefix}freeweek - shows all the champions that are free to play this week.\n${prefix}user <name> <server> - shows data about the user given.\n${prefix}servers - shows all the servers' acronyms that are used to find a user.\n${prefix}help - shows all the commands, you are looking at it now.`;
-    msg.react('👍');
-    msg.author.send(help);
-  }
+  if (command === 'help') return getHelp(msg, prefix);
 
-  if (command === 'freeweek') {
-    try {
-      const freeChampions = await getFreeWeek(champions);
-      return msg.channel.send(freeChampions);
-    } catch (e) {
-      return msg.channel.send('Error, this bug will be fixed soon.');
-    }
-  }
+  if (command === 'freeweek') return getFreeWeek(champions, msg);
 
-  if (command === 'user') {
-    const user = await getUser([args[0], args[1]], champions);
-    if (user === 'no args')
-      return msg.channel.send(
-        `${msg.author}, you need to give a name and a server (server is optional) \nStructure: ${prefix}user <name> <server>   |   Example: ${prefix}user faker KR`
-      );
-    else if (user === 'not found')
-      return msg.channel.send(`User ${args[0]} was not found!`);
-    const imgUrl = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${user.profileIconId}.png`;
-    return msg.channel.send(
-      `Data found:\nServer: ${user.server}\nName: ${user.name}\nLevel: ${
-        user.summonerLevel
-      }\nTotal mastery: ${user.totalMastery}\n${user.mainChampion
-        .map(
-          (champ) =>
-            `Main: ${champ[0]}, Mastery level: ${champ[1]}, Mastery points: ${champ[2]}`
-        )
-        .join('\n')}\nIcon:`,
-      { files: [imgUrl] }
-    );
-  }
+  if (command === 'user') return getUser([args[0], args[1]], champions, msg);
 
-  if (command === 'servers') {
-    msg.channel.send(
-      'List of servers: \n| BR - Brazil | NA - North America | EUN - Europe Nordic & East | EUW - Europe West | LA1 - Latin America North | LA2 - Latin America  South | OC - Oceania | RU - Russia | TR - Turkey | JP - Japan |'
-    );
-  }
+  if (command === 'servers') return getServers(msg);
 });
 
 client.login(process.env.BOT_TOKEN);

@@ -11,7 +11,6 @@ async function getUser(args, champions) {
       }?api_key=${process.env.RIOT_API_KEY}`
     )
     .catch((err) => {
-      console.log(err);
       return null;
     });
   if (!response) return null;
@@ -52,11 +51,25 @@ async function getUser(args, champions) {
   return response.data;
 }
 
-async function user(args, champions) {
-  if (!args[0]) return 'no args';
+async function user(args, champions, msg) {
+  if (!args[0])
+    return msg.channel.send(
+      `${msg.author}, you need to give a name and a server (server is optional) \nStructure: ${prefix}user <name> <server>   |   Example: ${prefix}user faker KR`
+    );
   const userData = await getUser(args, champions);
-  if (!userData) return `not found`;
-  return userData;
+  if (!userData) return msg.channel.send(`User ${args[0]} was not found!`);
+  const imgUrl = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${userData.profileIconId}.png`;
+  return msg.channel.send(
+    `Data found:\nServer: ${userData.server}\nName: ${userData.name}\nLevel: ${
+      userData.summonerLevel
+    }\nTotal mastery: ${userData.totalMastery}\n${userData.mainChampion
+      .map(
+        (champ) =>
+          `Main: ${champ[0]}, Mastery level: ${champ[1]}, Mastery points: ${champ[2]}`
+      )
+      .join('\n')}\nIcon:`,
+    { files: [imgUrl] }
+  );
 }
 
 export default user;
