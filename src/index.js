@@ -38,6 +38,23 @@ client.on('message', async (msg) => {
   if (command === 'user') return getUser([args[0], args[1]], champions, msg);
 
   if (command === 'servers') return getServers(msg);
+
+  if (command === 'embed') {
+    const embed = new Discord.MessageEmbed();
+    embed
+      .setColor('#3498db')
+      .setTitle('Name')
+      .setThumbnail('https://i.imgur.com/aEJCdi7.png')
+      .setDescription('Server')
+      .addFields(
+        { name: 'solo duo', value: 'iron iv', inline: true },
+        { name: 'flex', value: 'iron XV', inline: true }
+      )
+      .setTimestamp()
+      .setFooter('Heimerdinger Bot - link');
+
+    msg.channel.send(embed);
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
