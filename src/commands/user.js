@@ -24,10 +24,14 @@ async function getUser(args, champions) {
   )}/lol/champion-mastery/v4/scores/by-summoner/${
     response.data['id']
   }?api_key=${process.env.RIOT_API_KEY}`;
+  const eloUrl = `${getRegionUrl(args[1])}/lol/league/v4/entries/by-summoner/${
+    response.data['id']
+  }?api_key=${process.env.RIOT_API_KEY}`;
 
   await Promise.all([
     axios.get(championMasteryUrl),
     axios.get(totalMasteryUrl),
+    axios.get(eloUrl),
   ]).then(async (masteries) => {
     response.data.totalMastery = masteries[1].data;
     const mains = [];
@@ -43,6 +47,7 @@ async function getUser(args, champions) {
       ];
       mains.push(data);
     }
+    response.data.elo = masteries[2].data;
     response.data.mainChampion = mains;
     response.data.server = getRegionUrl(args[1])
       .split('//')[1]
@@ -62,7 +67,12 @@ async function user(args, champions, msg) {
   return msg.channel.send(
     `Data found:\nServer: ${userData.server}\nName: ${userData.name}\nLevel: ${
       userData.summonerLevel
-    }\nTotal mastery: ${userData.totalMastery}\n${userData.mainChampion
+    }\nTotal mastery: ${userData.totalMastery}\n${userData.elo
+      .map(
+        (mode) =>
+          `Elo: ${mode.tier} ${mode.rank}, wins: ${mode.wins}, losses: ${mode.losses} (${mode.queueType})`
+      )
+      .join('\n')}\n${userData.mainChampion
       .map(
         (champ) =>
           `Main: ${champ[0]}, Mastery level: ${champ[1]}, Mastery points: ${champ[2]}`

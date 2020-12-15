@@ -1,6 +1,7 @@
 import Discord from 'discord.js';
 import axios from 'axios';
 import {} from 'dotenv/config.js';
+
 import getFreeWeek from './commands/freeweek.js';
 import getUser from './commands/user.js';
 import getServers from './commands/servers.js';
@@ -19,7 +20,7 @@ axios
   .then((response) => (champions = response.data.data));
 
 client.on('ready', () => {
-  client.user.setActivity('Type: ?help and be happy', {
+  client.user.setActivity('Type: ' + prefix + 'help', {
     type: 'PLAYING',
   });
   console.log(`Logged as ${client.user.tag}`);
@@ -40,6 +41,3 @@ client.on('message', async (msg) => {
 });
 
 client.login(process.env.BOT_TOKEN);
-
-// make find user function, flags: user, region
-//default region is NA1
