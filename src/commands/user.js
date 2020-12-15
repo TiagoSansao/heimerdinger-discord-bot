@@ -1,18 +1,31 @@
 import axios from 'axios';
 import getChampionName from '../utils/getChampionName.js';
+import getRegionUrl from '../utils/getRegionUrl.js';
 import {} from 'dotenv/config.js';
 
-async function getUser(user, champions) {
+async function getUser(args, champions) {
+  console.log(getRegionUrl(args[1]));
   const response = await axios
     .get(
-      `${process.env.BASE_URL}/lol/summoner/v4/summoners/by-name/${user}?api_key=${process.env.RIOT_API_KEY}`
+      `${getRegionUrl(args[1])}/lol/summoner/v4/summoners/by-name/${
+        args[0]
+      }?api_key=${process.env.RIOT_API_KEY}`
     )
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       return null;
     });
   if (!response) return null;
-  const championMasteryUrl = `${process.env.BASE_URL}/lol/champion-mastery/v4/champion-masteries/by-summoner/${response.data['id']}?api_key=${process.env.RIOT_API_KEY}`;
-  const totalMasteryUrl = `${process.env.BASE_URL}/lol/champion-mastery/v4/scores/by-summoner/${response.data['id']}?api_key=${process.env.RIOT_API_KEY}`;
+  const championMasteryUrl = `${getRegionUrl(
+    args[1]
+  )}/lol/champion-mastery/v4/champion-masteries/by-summoner/${
+    response.data['id']
+  }?api_key=${process.env.RIOT_API_KEY}`;
+  const totalMasteryUrl = `${getRegionUrl(
+    args[1]
+  )}/lol/champion-mastery/v4/scores/by-summoner/${
+    response.data['id']
+  }?api_key=${process.env.RIOT_API_KEY}`;
 
   await Promise.all([
     axios.get(championMasteryUrl),
@@ -39,9 +52,9 @@ async function getUser(user, champions) {
   return response.data;
 }
 
-async function user(user, champions) {
+async function user(args, champions) {
   if (!user) return 'no args';
-  const userData = await getUser(user, champions);
+  const userData = await getUser(args, champions);
   if (!userData) return `not found`;
   return userData;
 }

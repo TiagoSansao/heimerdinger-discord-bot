@@ -26,12 +26,16 @@ client.on('message', async (msg) => {
   const command = args.shift().toLowerCase();
 
   if (command === 'freeweek') {
-    const freeChampions = await getFreeWeek(champions);
-    return msg.channel.send(freeChampions);
+    try {
+      const freeChampions = await getFreeWeek(champions);
+      return msg.channel.send(freeChampions);
+    } catch (e) {
+      return msg.channel.send('Error, this bug will be fixed soon.');
+    }
   }
 
   if (command === 'user') {
-    const user = await getUser(args[0], champions);
+    const user = await getUser([args[0], args[1]], champions);
     if (user === 'no args')
       return msg.channel.send(
         `${msg.author}, you need to give a name. \nExample:  ${prefix}user faker`
