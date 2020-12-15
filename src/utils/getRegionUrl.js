@@ -1,4 +1,5 @@
 function getRegionUrl(region) {
+  if (region) region = region.toUpperCase();
   switch (region) {
     case 'BR':
       return 'https://br1.api.riotgames.com';

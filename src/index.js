@@ -25,6 +25,12 @@ client.on('message', async (msg) => {
   const args = msg.content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
 
+  if (command === 'help') {
+    const help = `Hello, here are my commands, use it wisely.\n${prefix}freeweek - shows all the champions that are free to play this week.\n${prefix}user <name> <server> - shows data about the user given.\n${prefix}servers - shows all the servers' acronyms that are used to find a user.\n${prefix}help - shows all the commands, you are looking at it now.`;
+    msg.react('👍');
+    msg.author.send(help);
+  }
+
   if (command === 'freeweek') {
     try {
       const freeChampions = await getFreeWeek(champions);
@@ -38,13 +44,13 @@ client.on('message', async (msg) => {
     const user = await getUser([args[0], args[1]], champions);
     if (user === 'no args')
       return msg.channel.send(
-        `${msg.author}, you need to give a name. \nExample:  ${prefix}user faker`
+        `${msg.author}, you need to give a name and a server (server is optional) \nStructure: ${prefix}user <name> <server>   |   Example: ${prefix}user faker KR`
       );
     else if (user === 'not found')
       return msg.channel.send(`User ${args[0]} was not found!`);
     const imgUrl = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${user.profileIconId}.png`;
     return msg.channel.send(
-      `Data found:\nName: ${user.name}\nLevel: ${
+      `Data found:\nServer: ${user.server}\nName: ${user.name}\nLevel: ${
         user.summonerLevel
       }\nTotal mastery: ${user.totalMastery}\n${user.mainChampion
         .map(
@@ -53,6 +59,12 @@ client.on('message', async (msg) => {
         )
         .join('\n')}\nIcon:`,
       { files: [imgUrl] }
+    );
+  }
+
+  if (command === 'servers') {
+    msg.channel.send(
+      'List of servers: \n| BR - Brazil | NA - North America | EUN - Europe Nordic & East | EUW - Europe West | LA1 - Latin America North | LA2 - Latin America  South | OC - Oceania | RU - Russia | TR - Turkey | JP - Japan |'
     );
   }
 });
