@@ -69,23 +69,6 @@ async function user(args, champions, msg) {
   const userData = await getUser(args, champions);
   if (!userData) return msg.channel.send(`User ${args[0]} was not found!`);
   const imgUrl = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${userData.profileIconId}.png`;
-  // msg.channel.send(
-  //   `Data found:\nServer: ${userData.server}\nName: ${userData.name}\nLevel: ${
-  //     userData.summonerLevel
-  //   }\nTotal mastery: ${userData.totalMastery}\n${userData.elo
-  //     .map(
-  //       (mode) =>
-  //         `Elo: ${mode.tier} ${mode.rank}, wins: ${mode.wins}, losses: ${mode.losses} (${mode.queueType})`
-  //     )
-  //     .join('\n')}\n${userData.mainChampion
-  //     .map(
-  //       (champ) =>
-  //         `Main: ${champ[0]}, Mastery level: ${champ[1]}, Mastery points: ${champ[2]}`
-  //     )
-  //     .join('\n')}\nIcon:`,
-  //   { files: [imgUrl] }
-  // );
-
   const embed = new discord.MessageEmbed();
   embed
     .setColor('#3498db')
@@ -118,10 +101,8 @@ async function user(args, champions, msg) {
       { name: 'Losses', value: mode.losses, inline: true }
     );
   });
-
   embed.addField('\u200B', '\u200B');
   userData.mainChampion.forEach((champ, index) => {
-    // `Main: ${champ[0]}, Mastery level: ${champ[1]}, Mastery points: ${champ[2]}`
     embed.addFields(
       {
         name: 'Main champion ' + (index + 1) + 'º',
@@ -132,9 +113,7 @@ async function user(args, champions, msg) {
       { name: 'Mastery points', value: champ[2], inline: true }
     );
   });
-
   embed.setTimestamp().setFooter('Heimerdinger Bot - link');
-
   msg.channel.send(embed);
 }
 

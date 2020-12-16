@@ -1,3 +1,4 @@
+import Discord from 'discord.js';
 import axios from 'axios';
 import getChampionName from '../utils/getChampionName.js';
 import {} from 'dotenv/config.js';
@@ -13,7 +14,17 @@ async function getFreeWeek(champions, msg) {
   const text = `Champions to play for free during this week:\n${FWChampions.join(
     ', '
   )}`;
-  return msg.channel.send(text);
+  const embed = new Discord.MessageEmbed();
+  embed
+    .setColor('#3498db')
+    .setTitle('Free Week')
+    .setDescription('Champions to play for free during this week')
+    .setThumbnail('https://i.imgur.com/aEJCdi7.png')
+    .addField('Champions', FWChampions.join(', '))
+    .setTimestamp()
+    .setFooter('Heimerdinger Bot - link');
+
+  return msg.channel.send(embed);
 }
 
 export default getFreeWeek;
