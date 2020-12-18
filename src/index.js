@@ -55,6 +55,8 @@ client.on('message', async (msg) => {
 
     msg.channel.send(embed);
   }
+
+  if (command === 'champion') return;
 });
 
 client.login(process.env.BOT_TOKEN);

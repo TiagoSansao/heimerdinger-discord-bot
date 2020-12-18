@@ -10,7 +10,7 @@ export default function getHelp(msg, prefix) {
     .addFields(
       {
         name: `${prefix}freeweek`,
-        value: 'Shows all the champions that are free to play this week',
+        value: 'Shows all the champions that are free to play this week.',
       },
       {
         name: `${prefix}user <name> <server>`,
@@ -19,6 +19,10 @@ export default function getHelp(msg, prefix) {
       {
         name: `${prefix}help`,
         value: 'Shows all the commands, you are looking at it now.',
+      },
+      {
+        name: `${prefix}servers`,
+        value: 'Shows all the servers acronyms.',
       }
     )
     .setTimestamp()
