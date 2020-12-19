@@ -13,6 +13,8 @@ async function getData(champion, role) {
   const allRunes = root
     .querySelectorAll('.ChampionRuneSmallCHGG__RuneName-sc-1vubct9-5')
     .map((element) => element.childNodes[0].rawText);
+  let roleSite = root.querySelector('.ripples.sc-jDwBTQ.gctzUa');
+  roleSite = roleSite.childNodes[0].childNodes[0].rawText;
   let runes = [[], [], []];
   allRunes.forEach((rune, index) => {
     if (index < 5) {
@@ -25,14 +27,14 @@ async function getData(champion, role) {
   });
   const championData = {
     name: championName,
-    role: role[0].toUpperCase() + role.slice(1).toLowerCase(),
+    role: roleSite.replace('role-', '').toUpperCase(),
     runes: runes,
+    iconUrl: `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/${championName}.png`,
   };
-  console.log(championData);
   return championData;
 }
 
-async function getChampion(msg, champion, role, prefix) {
+async function getChampion(msg, champion, role, prefix, champions) {
   if (!champion || !role)
     return msg.channel.send(
       `Bad usage of the comand.\nStructure: ${prefix}champion <champion name> <lane>  ||  Example: ${prefix}champion garen top` // LEMBRAR DE PEGAR LANN PELO CRAWLER
@@ -43,17 +45,17 @@ async function getChampion(msg, champion, role, prefix) {
     .setColor('#3498db')
     .setTitle(data.name + ' Recommended Build')
     .setDescription(
-      `Information about ${data.name} in **${data.role}**\n\u200B\n\u200B`
+      `Information about ${data.name} in the **${data.role}**\n\u200B\n\u200B`
     )
-    .setThumbnail('https://i.imgur.com/aEJCdi7.png') // get champ icon
+    .setThumbnail(data.iconUrl)
     .addFields(
       {
-        name: 'Runes:',
-        value: `**${data.runes[0].shift()}** \n${data.runes[0].join('\n')}`,
+        name: 'Runes:' + '\n\u200B',
+        value: `**${data.runes[0].shift()}**\n${data.runes[0].join('\n')}`,
         inline: true,
       },
       {
-        name: '\u200B',
+        name: '\u200B' + '\n\u200B',
         value: `**${data.runes[1].shift()}** \n${data.runes[1].join('\n')}`,
         inline: true,
       }
