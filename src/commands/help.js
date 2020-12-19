@@ -9,20 +9,26 @@ export default function getHelp(msg, prefix) {
     .setThumbnail('https://i.imgur.com/aEJCdi7.png')
     .addFields(
       {
+        name: `${prefix}champion <champion name> <role>`,
+        value: `Shows data about a champion\nExample: ${prefix}champion garen top`,
+      },
+      {
+        name: `${prefix}user <name> <server>`,
+        value:
+          'Shows data about the user given.' +
+          `\nExample: ${prefix}user faker kr`,
+      },
+      {
         name: `${prefix}freeweek`,
         value: 'Shows all the champions that are free to play this week.',
       },
       {
-        name: `${prefix}user <name> <server>`,
-        value: 'Shows data about the user given.',
+        name: `${prefix}servers`,
+        value: 'Shows all the servers acronyms.',
       },
       {
         name: `${prefix}help`,
         value: 'Shows all the commands, you are looking at it now.',
-      },
-      {
-        name: `${prefix}servers`,
-        value: 'Shows all the servers acronyms.',
       }
     )
     .setTimestamp()

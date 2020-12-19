@@ -32,7 +32,11 @@ async function getData(champion, role) {
   return championData;
 }
 
-async function getChampion(msg, champion, role) {
+async function getChampion(msg, champion, role, prefix) {
+  if (!champion || !role)
+    return msg.channel.send(
+      `Bad usage of the comand.\nStructure: ${prefix}champion <champion name> <lane>  ||  Example: ${prefix}champion garen top` // LEMBRAR DE PEGAR LANN PELO CRAWLER
+    );
   const data = await getData(champion, role);
   const embed = new MessageEmbed();
   embed
