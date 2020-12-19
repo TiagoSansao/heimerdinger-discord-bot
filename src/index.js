@@ -5,6 +5,7 @@ import {} from 'dotenv/config.js';
 import getFreeWeek from './commands/freeweek.js';
 import getUser from './commands/user.js';
 import getServers from './commands/servers.js';
+import getChampion from './commands/champion.js';
 import getHelp from './commands/help.js';
 
 const client = new Discord.Client();
@@ -56,7 +57,7 @@ client.on('message', async (msg) => {
     msg.channel.send(embed);
   }
 
-  if (command === 'champion') return;
+  if (command === 'champion') return getChampion(msg, args[0], args[1]);
 });
 
 client.login(process.env.BOT_TOKEN);

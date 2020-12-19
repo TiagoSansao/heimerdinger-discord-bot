@@ -73,10 +73,10 @@ async function user(args, champions, msg) {
   embed
     .setColor('#3498db')
     .setTitle(userData.name)
-    .setDescription('Server: ' + userData.server)
     .setThumbnail(imgUrl)
-    .addField('Level', userData.summonerLevel)
-    .addField('\u200B', '\u200B')
+    .addField('Level', userData.summonerLevel, true)
+    .addField('Server', userData.server, true)
+    .addField('\u200B', '\u200B\n\u200B', true)
     .addFields(
       {
         name: 'Total mastery level',
@@ -89,8 +89,18 @@ async function user(args, champions, msg) {
         inline: true,
       }
     )
-    .addField('\u200B', '\u200B');
-  userData.elo.forEach((mode) => {
+    .addField('\u200B', '\u200B\n\u200B', true);
+  userData.elo.forEach((mode, index) => {
+    if (index === 1)
+      return embed.addFields(
+        {
+          name: mode.queueType,
+          value: `${mode.tier} ${mode.rank}`,
+          inline: true,
+        },
+        { name: 'Wins', value: mode.wins, inline: true },
+        { name: 'Losses', value: `${mode.losses} \n\u200B`, inline: true }
+      );
     embed.addFields(
       {
         name: mode.queueType,
@@ -101,8 +111,17 @@ async function user(args, champions, msg) {
       { name: 'Losses', value: mode.losses, inline: true }
     );
   });
-  embed.addField('\u200B', '\u200B');
   userData.mainChampion.forEach((champ, index) => {
+    if (index === 2)
+      return embed.addFields(
+        {
+          name: 'Main champion ' + (index + 1) + 'º',
+          value: champ[0],
+          inline: true,
+        },
+        { name: 'Mastery level', value: champ[1], inline: true },
+        { name: 'Mastery points', value: `${champ[2]}\n\u200B`, inline: true }
+      );
     embed.addFields(
       {
         name: 'Main champion ' + (index + 1) + 'º',
