@@ -7,6 +7,9 @@ import getUser from './commands/user.js';
 import getServers from './commands/servers.js';
 import getChampion from './commands/champion.js';
 import getHelp from './commands/help.js';
+import setLanguage from './commands/language.js';
+
+import { loadLanguages } from './controllers/langHandler.js';
 
 const client = new Discord.Client();
 
@@ -24,6 +27,7 @@ client.on('ready', () => {
   client.user.setActivity('Type: ' + prefix + 'help', {
     type: 'PLAYING',
   });
+  loadLanguages(client);
   console.log(`Logged as ${client.user.tag}`);
 });
 
@@ -59,6 +63,8 @@ client.on('message', async (msg) => {
 
   if (command === 'champion')
     return getChampion(msg, args[0], args[1], prefix, champions);
+
+  if (command === 'language') return setLanguage(msg, args[0], prefix);
 });
 
 client.login(process.env.BOT_TOKEN);

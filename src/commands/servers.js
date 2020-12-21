@@ -1,13 +1,11 @@
 import Discord from 'discord.js';
+import language from '../controllers/langHandler.js';
 
 export default function getServers(msg) {
-  // msg.channel.send(
-  //   'List of servers: \n| BR - Brazil | NA - North America | EUN - Europe Nordic & East | EUW - Europe West | LA1 - Latin America North | LA2 - Latin America  South | OC - Oceania | RU - Russia | TR - Turkey | JP - Japan |'
-  // )
   const embed = new Discord.MessageEmbed();
   embed
     .setColor('#3498db')
-    .setTitle('Servers acronyms')
+    .setTitle(language(msg.guild, 'SERVERS_ACRONYMS'))
     .setDescription('Use them to specify a region when necessary')
     .setThumbnail('https://i.imgur.com/aEJCdi7.png')
     .addFields(

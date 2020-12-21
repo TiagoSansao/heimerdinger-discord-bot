@@ -11,9 +11,6 @@ async function getFreeWeek(champions, msg) {
   const FWChampions = response.data.freeChampionIds.map((id) =>
     getChampionName(id, champions)
   );
-  const text = `Champions to play for free during this week:\n${FWChampions.join(
-    ', '
-  )}`;
   const embed = new Discord.MessageEmbed();
   embed
     .setColor('#3498db')
