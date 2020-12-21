@@ -1,6 +1,7 @@
 import axios from 'axios';
 import parser from 'node-html-parser';
 import { MessageEmbed } from 'discord.js';
+import lang from '../controllers/langHandler.js';
 
 async function getData(champion, role) {
   let { data } = await axios.get(
@@ -34,18 +35,19 @@ async function getData(champion, role) {
   return championData;
 }
 
-async function getChampion(msg, champion, role, prefix, champions) {
+async function getChampion(msg, champion, role) {
   if (!champion || !role)
-    return msg.channel.send(
-      `Bad usage of the comand.\nStructure: ${prefix}champion <champion name> <lane>  ||  Example: ${prefix}champion garen top` // LEMBRAR DE PEGAR LANN PELO CRAWLER
-    );
+    return msg.channel.send(lang(msg.guild, 'CHAMPION_BAD_USAGE'));
   const data = await getData(champion, role);
   const embed = new MessageEmbed();
   embed
     .setColor('#3498db')
-    .setTitle(data.name + ' Recommended Build')
+    .setTitle(data.name + lang(msg.guild, 'CHAMPION_TITLE'))
     .setDescription(
-      `Information about ${data.name} in the **${data.role}**\n\u200B\n\u200B`
+      `${lang(msg.guild, 'CHAMPION_DESCRIPTION_1')} ${data.name} ${lang(
+        msg.guild,
+        'CHAMPION_DESCRIPTION_2'
+      )} **${data.role}**\n\u200B\n\u200B`
     )
     .setThumbnail(data.iconUrl)
     .addFields(

@@ -9,11 +9,11 @@ import getChampion from './commands/champion.js';
 import getHelp from './commands/help.js';
 import setLanguage from './commands/language.js';
 
-import { loadLanguages } from './controllers/langHandler.js';
+import lang, { loadLanguages } from './controllers/langHandler.js';
 
 const client = new Discord.Client();
 
-const prefix = process.env.PREFIX;
+const prefix = '!h ';
 
 let champions = {};
 
@@ -32,17 +32,18 @@ client.on('ready', () => {
 });
 
 client.on('message', async (msg) => {
-  if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+  if (!msg.content.startsWith('!h') || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
 
-  if (command === 'help') return getHelp(msg, prefix);
+  if (command === 'help' || command === 'ajuda') return getHelp(msg, prefix);
 
   if (command === 'freeweek') return getFreeWeek(champions, msg);
 
-  if (command === 'user') return getUser([args[0], args[1]], champions, msg);
+  if (command === 'user' || command === 'usuario')
+    return getUser([args[0], args[1]], champions, msg);
 
-  if (command === 'servers') return getServers(msg);
+  if (command === 'servers' || command === 'servidores') return getServers(msg);
 
   if (command === 'embed') {
     const embed = new Discord.MessageEmbed();
@@ -61,14 +62,14 @@ client.on('message', async (msg) => {
     msg.channel.send(embed);
   }
 
-  if (command === 'champion')
-    return getChampion(msg, args[0], args[1], prefix, champions);
+  if (command === 'champion' || command === 'campeao')
+    return getChampion(msg, args[0], args[1]);
 
-  if (command === 'language') {
+  if (command === 'language' || command === 'idioma') {
     await setLanguage(msg, args[0], prefix);
     await loadLanguages(client);
     return;
-  }
+  } else return msg.channel.send(lang(msg.guild, 'COMMAND_NOT_FOUND'));
 });
 
 client.login(process.env.BOT_TOKEN);

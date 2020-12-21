@@ -29,8 +29,6 @@ export default (guild, textId) => {
     throw new Error('Unknown text ID:' + textId);
   }
   const selectedLanguage = guildLanguages[guild.id].toLowerCase();
-  console.log(guildLanguages[guild.id]);
-
   return config.translations[textId][selectedLanguage];
 };
 export { loadLanguages, setLanguage };

@@ -6,7 +6,7 @@ export default function getServers(msg) {
   embed
     .setColor('#3498db')
     .setTitle(language(msg.guild, 'SERVERS_ACRONYMS'))
-    .setDescription('Use them to specify a region when necessary')
+    .setDescription(language(msg.guild, 'SERVERS_DESCRIPTION'))
     .setThumbnail('https://i.imgur.com/aEJCdi7.png')
     .addFields(
       { name: 'BR', value: 'Brazil', inline: true },
