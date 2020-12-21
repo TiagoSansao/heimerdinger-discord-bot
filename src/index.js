@@ -64,7 +64,11 @@ client.on('message', async (msg) => {
   if (command === 'champion')
     return getChampion(msg, args[0], args[1], prefix, champions);
 
-  if (command === 'language') return setLanguage(msg, args[0], prefix);
+  if (command === 'language') {
+    await setLanguage(msg, args[0], prefix);
+    await loadLanguages(client);
+    return;
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
