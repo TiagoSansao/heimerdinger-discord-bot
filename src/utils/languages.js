@@ -119,9 +119,9 @@ export default {
       portugues:
         'Desculpe, mas você não tem permissão para utilizar este comando.',
     },
-    '': {
-      english: '',
-      portugues: '',
+    ADD_TO_SERVER: {
+      english: 'Add it to your server',
+      portugues: 'Adicione ao seu servidor',
     },
     '': {
       english: '',

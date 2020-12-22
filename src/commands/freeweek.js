@@ -22,7 +22,13 @@ async function getFreeWeek(champions, msg) {
     .setDescription(lang(msg.guild, 'FREEWEEK_DESCRIPTION'))
     .setThumbnail('https://i.imgur.com/aEJCdi7.png')
     .addField('Champions', FWChampions.join(', '))
-    .setFooter('Heimerdinger Bot - link');
+    .addField(
+      'Heimerdinger Bot',
+      `[${lang(
+        msg.guild,
+        'ADD_TO_SERVER'
+      )}](https://rebrand.ly/heimerdinger-bot)`
+    );
 
   return msg.channel.send(embed);
 }

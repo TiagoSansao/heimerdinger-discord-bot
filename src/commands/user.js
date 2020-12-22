@@ -2,6 +2,7 @@ import axios from 'axios';
 import discord from 'discord.js';
 import getChampionName from '../utils/getChampionName.js';
 import getRegionUrl from '../utils/getRegionUrl.js';
+import lang from '../controllers/langHandler.js';
 import {} from 'dotenv/config.js';
 
 async function getUser(args, champions) {
@@ -132,7 +133,10 @@ async function user(args, champions, msg) {
       { name: 'Mastery points', value: champ[2], inline: true }
     );
   });
-  embed.setFooter('Heimerdinger Bot - link');
+  embed.addField(
+    'Heimerdinger Bot',
+    `[${lang(msg.guild, 'ADD_TO_SERVER')}](https://rebrand.ly/heimerdinger-bot)`
+  );
   msg.channel.send(embed);
 }
 

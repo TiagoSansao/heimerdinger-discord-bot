@@ -34,6 +34,12 @@ export default function getHelp(msg, prefix) {
         value: lang(msg.guild, 'HELP_HELP'),
       }
     )
-    .setFooter('Heimerdinger Bot - link');
+    .addField(
+      'Heimerdinger Bot',
+      `[${lang(
+        msg.guild,
+        'ADD_TO_SERVER'
+      )}](https://rebrand.ly/heimerdinger-bot)`
+    );
   msg.channel.send(embed);
 }

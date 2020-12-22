@@ -62,7 +62,13 @@ async function getChampion(msg, champion, role) {
         inline: true,
       }
     )
-    .setFooter('Heimerdinger Bot - link');
+    .addField(
+      'Heimerdinger Bot',
+      `[${lang(
+        msg.guild,
+        'ADD_TO_SERVER'
+      )}](https://rebrand.ly/heimerdinger-bot)`
+    );
 
   msg.channel.send(embed);
 }
