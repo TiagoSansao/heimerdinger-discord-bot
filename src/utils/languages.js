@@ -92,7 +92,7 @@ export default {
     },
     COMMAND_CHAMPION: {
       english: '!h champion <champion name> <role>',
-      portugues: '!h campeao <nomme do campeao> <função>',
+      portugues: '!h campeao <nome do campeao> <função>',
     },
     COMMAND_USER: {
       english: '!h user <name> <server>',

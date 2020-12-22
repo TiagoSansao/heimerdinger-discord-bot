@@ -29,17 +29,17 @@ client.on('ready', () => {
     type: 'PLAYING',
   });
   loadLanguages(client);
+  messageWhenJoin(client);
   console.log(`Logged as ${client.user.tag}`);
 });
-
-messageWhenJoin(client);
 
 client.on('message', async (msg) => {
   if (!msg.content.startsWith('!h') || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
 
-  if (command === 'help' || command === 'ajuda') return getHelp(msg, prefix);
+  const helpAlias = ['help', 'ajuda', 'commands', 'comandos'];
+  if (helpAlias.includes(command)) return getHelp(msg, prefix);
 
   if (command === 'freeweek') return getFreeWeek(champions, msg);
 
