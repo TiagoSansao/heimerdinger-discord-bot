@@ -58,9 +58,66 @@ export default {
       english: 'Language changed successfully!',
       portugues: 'Idioma trocado com sucesso!',
     },
-    '': {
-      english: '',
-      portugues: '',
+    HELP_LANGUAGE: {
+      english:
+        "Change bot's language in the server, available langs: Português and English",
+      portugues:
+        'Muda o idioma do bot dentro do servidor, idiomas disponíveis: Português e English ',
+    },
+    HELP_CHAMPION: {
+      english: 'Shows data about a champion\nExample: !h champion garen top',
+      portugues: 'Mostra dados de um campeão\nExemplo: !h champion garen top',
+    },
+    HELP_FREEWEEK: {
+      english: 'Shows all the champions that are free to play this week.',
+      portugues:
+        'Mostra todos os campeões que estão de graça para jogar durante esta semana.',
+    },
+    HELP_SERVERS: {
+      english: 'Shows all the servers acronyms.',
+      portugues: 'Mostra todas as abreviações dos servidores.',
+    },
+    HELP_HELP: {
+      english: 'Shows all the commands, you are looking at it now.',
+      portugues: 'Mostra todos os comandos, você está olhando eles agora.',
+    },
+    HELP_USER: {
+      english:
+        'Shows data about the user given.' + '\nExample: !h user faker kr',
+      portugues: 'Mostra dados sobre um usuário.\nExemplo: !h user faker br',
+    },
+    COMMAND_LANGUAGE: {
+      english: '!h language <language>',
+      portugues: '!h idioma <idioma>',
+    },
+    COMMAND_CHAMPION: {
+      english: '!h champion <champion name> <role>',
+      portugues: '!h campeao <nomme do campeao> <função>',
+    },
+    COMMAND_USER: {
+      english: '!h user <name> <server>',
+      portugues: '!h usuario <nome> <servidor>',
+    },
+    COMMAND_SERVERS: {
+      english: '!h servers',
+      portugues: '!h servidores',
+    },
+    COMMAND_FREEWEEK: {
+      english: '!h freeweek',
+      portugues: '!h freeweek',
+    },
+    COMMAND_HELP: {
+      english: '!h help',
+      portugues: '!h ajuda',
+    },
+    HELP_DESCRIPTION: {
+      english: 'All the commmands explained',
+      portugues: 'Todos os comandos explicados',
+    },
+    NO_PERMISSION: {
+      english: 'Sorry, but you do not have permission to use this command.',
+      portugues:
+        'Desculpe, mas você não tem permissão para utilizar este comando.',
     },
     '': {
       english: '',

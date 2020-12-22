@@ -22,7 +22,6 @@ async function getFreeWeek(champions, msg) {
     .setDescription(lang(msg.guild, 'FREEWEEK_DESCRIPTION'))
     .setThumbnail('https://i.imgur.com/aEJCdi7.png')
     .addField('Champions', FWChampions.join(', '))
-    .setTimestamp()
     .setFooter('Heimerdinger Bot - link');
 
   return msg.channel.send(embed);

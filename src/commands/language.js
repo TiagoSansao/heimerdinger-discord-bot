@@ -4,6 +4,8 @@ import mongoConnection from '../database/connection.js';
 import languageModel from '../database/models/language.js';
 
 export default async function language(msg, language) {
+  if (!msg.member.hasPermission('ADMINISTRATOR'))
+    return msg.channel.send(lang(msg.guild, 'NO_PERMISSION'));
   if (!language) return msg.channel.send(lang(msg.guild, 'LANGUAGE_ERROR'));
   const { guild } = msg;
   const targetLanguage = language.toLowerCase();

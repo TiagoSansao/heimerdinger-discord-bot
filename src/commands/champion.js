@@ -62,7 +62,6 @@ async function getChampion(msg, champion, role) {
         inline: true,
       }
     )
-    .setTimestamp()
     .setFooter('Heimerdinger Bot - link');
 
   msg.channel.send(embed);

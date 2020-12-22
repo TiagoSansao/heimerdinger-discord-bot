@@ -1,37 +1,39 @@
 import discord from 'discord.js';
+import lang from '../controllers/langHandler.js';
 
 export default function getHelp(msg, prefix) {
   const embed = new discord.MessageEmbed();
   embed
     .setColor('#3498db')
-    .setTitle('Heimerdinger bot')
-    .setDescription('Help - Commands')
+    .setTitle('Heimerdinger Bot')
+    .setDescription(lang(msg.guild, 'HELP_DESCRIPTION'))
     .setThumbnail('https://i.imgur.com/aEJCdi7.png')
     .addFields(
       {
-        name: `${prefix}champion <champion name> <role>`,
-        value: `Shows data about a champion\nExample: ${prefix}champion garen top`,
+        name: lang(msg.guild, 'COMMAND_LANGUAGE'),
+        value: lang(msg.guild, 'HELP_LANGUAGE'),
       },
       {
-        name: `${prefix}user <name> <server>`,
-        value:
-          'Shows data about the user given.' +
-          `\nExample: ${prefix}user faker kr`,
+        name: lang(msg.guild, 'COMMAND_CHAMPION'),
+        value: lang(msg.guild, 'HELP_CHAMPION'),
       },
       {
-        name: `${prefix}freeweek`,
-        value: 'Shows all the champions that are free to play this week.',
+        name: lang(msg.guild, 'COMMAND_USER'),
+        value: lang(msg.guild, 'HELP_USER'),
       },
       {
-        name: `${prefix}servers`,
-        value: 'Shows all the servers acronyms.',
+        name: lang(msg.guild, 'COMMAND_FREEWEEK'),
+        value: lang(msg.guild, 'HELP_FREEWEEK'),
       },
       {
-        name: `${prefix}help`,
-        value: 'Shows all the commands, you are looking at it now.',
+        name: lang(msg.guild, 'COMMAND_SERVERS'),
+        value: lang(msg.guild, 'HELP_SERVERS'),
+      },
+      {
+        name: lang(msg.guild, 'COMMAND_HELP'),
+        value: lang(msg.guild, 'HELP_HELP'),
       }
     )
-    .setTimestamp()
     .setFooter('Heimerdinger Bot - link');
   msg.channel.send(embed);
 }

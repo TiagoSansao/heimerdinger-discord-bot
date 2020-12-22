@@ -132,7 +132,7 @@ async function user(args, champions, msg) {
       { name: 'Mastery points', value: champ[2], inline: true }
     );
   });
-  embed.setTimestamp().setFooter('Heimerdinger Bot - link');
+  embed.setFooter('Heimerdinger Bot - link');
   msg.channel.send(embed);
 }
 
