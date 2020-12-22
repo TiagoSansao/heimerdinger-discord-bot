@@ -29,7 +29,7 @@ function messageWhenJoining(client) {
       )
       .addField(
         'Heimerdinger Bot',
-        `[${lang(guild, 'ADD_TO_SERVER')}](https://rebrand.ly/heimerdinger-bot)`
+        `[${lang(guild, 'ADD_TO_SERVER')}](${process.env.INVITE_LINK})`
       );
     channelTarget.send(embed);
     return client;

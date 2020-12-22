@@ -24,10 +24,7 @@ async function getFreeWeek(champions, msg) {
     .addField('Champions', FWChampions.join(', '))
     .addField(
       'Heimerdinger Bot',
-      `[${lang(
-        msg.guild,
-        'ADD_TO_SERVER'
-      )}](https://rebrand.ly/heimerdinger-bot)`
+      `[${lang(msg.guild, 'ADD_TO_SERVER')}](${process.env.INVITE_LINK})`
     );
 
   return msg.channel.send(embed);
