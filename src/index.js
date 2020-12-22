@@ -10,6 +10,7 @@ import getHelp from './commands/help.js';
 import setLanguage from './commands/language.js';
 
 import lang, { loadLanguages } from './controllers/langHandler.js';
+import messageWhenJoin from './controllers/messageWhenJoin.js';
 
 const client = new Discord.Client();
 
@@ -30,6 +31,8 @@ client.on('ready', () => {
   loadLanguages(client);
   console.log(`Logged as ${client.user.tag}`);
 });
+
+messageWhenJoin(client);
 
 client.on('message', async (msg) => {
   if (!msg.content.startsWith('!h') || msg.author.bot) return;
