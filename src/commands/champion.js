@@ -29,12 +29,22 @@ async function getData(champion, role) {
   const allItems = root.querySelectorAll('div.View-sc-1c57lgy-1.cLLSJv.View__StyledDiv-sc-1c57lgy-0');
   const spells = root.querySelectorAll('img.sc-fONwsr.bsxfkk').map((spell) => {
     return spell.rawAttrs.match(/&lt;spellname&gt;([a-z]+)&lt;\/spellname&gt;/i)[1]
+  });
+  const winRate = root.querySelector('div.shared__StatValue-sc-1nek54v-0.jLqjzk');
+  let skillsOrder = [];
+  root.querySelectorAll('p.typography__Caption-sc-1mpsx83-11.typography__CaptionBold-sc-1mpsx83-12.dwtPBh').forEach((ability, index) => {
+    if (index === 1 || index === 2 | index === 3) {
+      skillsOrder.push(ability.childNodes[0].rawText);
+    }
   })
+  
   const championData = {
     name: championName,
     role: roleSite.replace('role-', '').toUpperCase(),
     runes: runes,
     spells: spells,
+    winRate: winRate,
+    skillsORder: skillsOrder,
     iconUrl: `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/${championName}.png`,
   };
   return championData;
