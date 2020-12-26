@@ -25,7 +25,7 @@ axios
   .then((response) => (champions = response.data.data));
 
 client.on('ready', () => {
-  client.user.setActivity('Type: ' + prefix + 'help', {
+  client.user.setActivity('!h help | !h language', {
     type: 'PLAYING',
   });
   loadLanguages(client);

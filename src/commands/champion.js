@@ -25,11 +25,16 @@ async function getData(champion, role) {
     } else if (index < 11) {
       runes[2].push(rune);
     }
-  });
+  });  
+  const allItems = root.querySelectorAll('div.View-sc-1c57lgy-1.cLLSJv.View__StyledDiv-sc-1c57lgy-0');
+  const spells = root.querySelectorAll('img.sc-fONwsr.bsxfkk').map((spell) => {
+    return spell.rawAttrs.match(/&lt;spellname&gt;([a-z]+)&lt;\/spellname&gt;/i)[1]
+  })
   const championData = {
     name: championName,
     role: roleSite.replace('role-', '').toUpperCase(),
     runes: runes,
+    spells: spells,
     iconUrl: `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/${championName}.png`,
   };
   return championData;
@@ -69,5 +74,7 @@ async function getChampion(msg, champion, role) {
 
   msg.channel.send(embed);
 }
+
+getData('lucian', 'adc')
 
 export default getChampion;
