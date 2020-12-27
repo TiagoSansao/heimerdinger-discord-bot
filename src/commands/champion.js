@@ -4,71 +4,82 @@ import { MessageEmbed } from "discord.js";
 import lang from "../controllers/langHandler.js";
 
 async function getData(champion, role) {
-  let { data } = await axios.get(
-    `${process.env.API_CHAMPIONS}${
-      role ? `${champion}/${role}` : `${champion}`
-    }`
-  );
-  const root = parser.parse(data);
-  let championName = root.querySelector("h1").childNodes[0].rawText;
+  try {
+    let { data } = await axios.get(
+      `${process.env.API_CHAMPIONS}${
+        role ? `${champion}/${role}` : `${champion}`
+      }`
+    );
+    const root = parser.parse(data);
 
-  championName = championName
-    .split(" ")
-    .map((partOfName) => partOfName[0].toUpperCase() + partOfName.slice(1))
-    .join("");
-  console.log(championName);
+    let championName = root.querySelector("h1").childNodes[0].rawText;
+    championName = championName
+      .split(" ")
+      .map((partOfName) => partOfName[0].toUpperCase() + partOfName.slice(1))
+      .join("");
 
-  const allRunes = root
-    .querySelectorAll(".ChampionRuneSmallCHGG__RuneName-sc-1vubct9-5")
-    .map((element) => element.childNodes[0].rawText);
-  let roleSite = root.querySelector(".ripples.sc-jDwBTQ.gctzUa");
-  roleSite = roleSite.childNodes[0].childNodes[0].rawText;
-  let runes = [[], [], []];
-  allRunes.forEach((rune, index) => {
-    if (index < 5) {
-      runes[0].push(rune);
-    } else if (index < 8) {
-      runes[1].push(rune);
-    } else if (index < 11) {
-      runes[2].push(rune);
-    }
-  });
+    const allRunes = root
+      .querySelectorAll(".ChampionRuneSmallCHGG__RuneName-sc-1vubct9-5")
+      .map((element) => element.childNodes[0].rawText);
 
-  const spells = root.querySelectorAll("img.sc-fONwsr.bsxfkk").map((spell) => {
-    return spell.rawAttrs.match(
-      /&lt;spellname&gt;([a-z]+)&lt;\/spellname&gt;/i
-    )[1];
-  });
-  const winRate = root.querySelector(
-    "div.shared__StatValue-sc-1nek54v-0.jLqjzk"
-  ).childNodes[0].rawText;
-  let skillsOrder = [];
-  root
-    .querySelectorAll(
-      "p.typography__Caption-sc-1mpsx83-11.typography__CaptionBold-sc-1mpsx83-12.dwtPBh"
-    )
-    .forEach((ability, index) => {
-      if (index === 1 || (index === 2) | (index === 3)) {
-        skillsOrder.push(ability.childNodes[0].rawText);
+    let roleSite = root.querySelector(".ripples.sc-jDwBTQ.gctzUa");
+    roleSite = roleSite.childNodes[0].childNodes[0].rawText;
+
+    let runes = [[], [], []];
+    allRunes.forEach((rune, index) => {
+      if (index < 5) {
+        runes[0].push(rune);
+      } else if (index < 8) {
+        runes[1].push(rune);
+      } else if (index < 11) {
+        runes[2].push(rune);
       }
     });
 
-  const championData = {
-    name: championName,
-    role: roleSite.replace("role-", "").toUpperCase(),
-    runes: runes,
-    spells: [spells[0], spells[1]],
-    winRate: winRate,
-    skillsOrder: skillsOrder,
-    iconUrl: `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/${championName}.png`,
-  };
-  return championData;
+    const spells = root
+      .querySelectorAll("img.sc-fONwsr.bsxfkk")
+      .map((spell) => {
+        return spell.rawAttrs.match(
+          /&lt;spellname&gt;([a-z]+)&lt;\/spellname&gt;/i
+        )[1];
+      });
+
+    const winRate = root.querySelector(
+      "div.shared__StatValue-sc-1nek54v-0.jLqjzk"
+    ).childNodes[0].rawText;
+
+    let skillsOrder = [];
+    root
+      .querySelectorAll(
+        "p.typography__Caption-sc-1mpsx83-11.typography__CaptionBold-sc-1mpsx83-12.dwtPBh"
+      )
+      .forEach((ability, index) => {
+        if (index === 1 || (index === 2) | (index === 3)) {
+          skillsOrder.push(ability.childNodes[0].rawText);
+        }
+      });
+
+    const championData = {
+      name: championName,
+      role: roleSite.replace("role-", "").toUpperCase(),
+      runes: runes,
+      spells: [spells[0], spells[1]],
+      winRate: winRate,
+      skillsOrder: skillsOrder,
+      iconUrl: `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/${championName}.png`,
+    };
+    return championData;
+  } catch (err) {
+    return 404;
+  }
 }
 
 async function getChampion(msg, champion, role) {
   if (!champion || !role)
     return msg.channel.send(lang(msg.guild, "CHAMPION_BAD_USAGE"));
-  const data = await getData(champion, role);
+  const data = await getData(champion.replace("_", ""), role);
+  if (data === 404)
+    return msg.channel.send(lang(msg.guild, "CHAMPION_BAD_USAGE"));
   const embed = new MessageEmbed();
   embed
     .setColor("#3498db")
@@ -121,6 +132,6 @@ async function getChampion(msg, champion, role) {
   msg.channel.send(embed);
 }
 
-getData("masteryi", "jungle");
+getData("master yi", "jungle");
 
 export default getChampion;

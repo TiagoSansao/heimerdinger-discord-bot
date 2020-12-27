@@ -1,159 +1,161 @@
 export default {
-  languages: ['english', 'portugues'],
+  languages: ["english", "portugues"],
   translations: {
     MASTERY_POINTS: {
-      english: 'Mastery points',
-      portugues: 'Pontos de maestria',
+      english: "Mastery points",
+      portugues: "Pontos de maestria",
     },
     SERVERS_ACRONYMS: {
-      english: 'Servers acronyms',
-      portugues: 'Abreviações dos servidores',
+      english: "Servers acronyms",
+      portugues: "Abreviações dos servidores",
     },
     SERVERS_DESCRIPTION: {
-      english: 'Use them to specify a region when necessary',
-      portugues: 'Use elas para especificar uma região quando necessário.',
+      english: "Use them to specify a region when necessary",
+      portugues: "Use elas para especificar uma região quando necessário.",
     },
     SOMETHING_WENT_WRONG: {
-      english: 'Something went wrong, try again later.',
-      portugues: 'Algo deu errado, tente mais tarde novamente.',
+      english: "Something went wrong, try again later.",
+      portugues: "Algo deu errado, tente mais tarde novamente.",
     },
     FREEWEEK_DESCRIPTION: {
-      english: 'Champions to play for free during this week.',
-      portugues: 'Campeões para jogar de graça durante a semana.',
+      english: "Champions to play for free during this week.",
+      portugues: "Campeões para jogar de graça durante a semana.",
     },
     COMMAND_NOT_FOUND: {
-      english: 'Command not found, you can see my commands using !h help',
+      english: "Command not found, you can see my commands using !h help",
       portugues:
-        'Comando não encontrado, você pode ver meus commandos usando !h help',
+        "Comando não encontrado, você pode ver meus commandos usando !h help",
     },
     CHAMPION_BAD_USAGE: {
       english:
-        'Bad usage of the comand.\nStructure: !h champion <champion name> <role>  ||  Example: !h champion garen top',
+        "Bad usage of the comand.\nStructure: !h champion <champion name> <role>  ||  Example: !h champion master_yi jungle",
       portugues:
-        'Mau uso do comando. \nEstrutura: !h champion <nome do campeão> <função>   | |   Exemplo: !h champion garen top',
+        "Mau uso do comando. \nEstrutura: !h champion <nome do campeão> <função>   | |   Exemplo: !h champion master_yi jungle",
     },
     CHAMPION_TITLE: {
-      english: ' Recommended Build',
-      portugues: ' Build Recomendada',
+      english: " Recommended Build",
+      portugues: " Build Recomendada",
     },
     CHAMPION_DESCRIPTION_1: {
-      english: 'Information about',
-      portugues: 'Informação sobre',
+      english: "Information about",
+      portugues: "Informação sobre",
     },
     CHAMPION_DESCRIPTION_2: {
-      english: 'the',
-      portugues: 'na função de',
+      english: "the",
+      portugues: "na função de",
     },
     LANGUAGE_ERROR: {
       english:
-        'You need to specify a language!\nExample: !h language portugues',
+        "You need to specify a language!\nExample: !h language portugues",
       portugues:
-        'Você precisa especificar uma linguagem!\nExemplo: !h language portugues',
+        "Você precisa especificar uma linguagem!\nExemplo: !h language portugues",
     },
     LANGUAGE_NOT_SUPPORTED: {
-      english: 'This language is not supported!',
-      portugues: 'Não há tradução para este idioma.',
+      english: "This language is not supported!",
+      portugues: "Não há tradução para este idioma.",
     },
     LANGUAGE_CHANGED: {
-      english: 'Language changed successfully!',
-      portugues: 'Idioma trocado com sucesso!',
+      english: "Language changed successfully!",
+      portugues: "Idioma trocado com sucesso!",
     },
     HELP_LANGUAGE: {
       english:
         "Change bot's language in the server, available langs: Português and English",
       portugues:
-        'Muda o idioma do bot dentro do servidor, idiomas disponíveis: Português e English ',
+        "Muda o idioma do bot dentro do servidor, idiomas disponíveis: Português e English ",
     },
     HELP_CHAMPION: {
-      english: 'Shows data about a champion\nExample: !h champion garen top',
-      portugues: 'Mostra dados de um campeão\nExemplo: !h champion garen top',
+      english:
+        "Shows data about a champion\nExample: !h champion master_yi jungle",
+      portugues:
+        "Mostra dados de um campeão\nExemplo: !h champion master_yi jungle",
     },
     HELP_FREEWEEK: {
-      english: 'Shows all the champions that are free to play this week.',
+      english: "Shows all the champions that are free to play this week.",
       portugues:
-        'Mostra todos os campeões que estão de graça para jogar durante esta semana.',
+        "Mostra todos os campeões que estão de graça para jogar durante esta semana.",
     },
     HELP_SERVERS: {
-      english: 'Shows all the servers acronyms.',
-      portugues: 'Mostra todas as abreviações dos servidores.',
+      english: "Shows all the servers acronyms.",
+      portugues: "Mostra todas as abreviações dos servidores.",
     },
     HELP_HELP: {
-      english: 'Shows all the commands, you are looking at it now.',
-      portugues: 'Mostra todos os comandos, você está olhando eles agora.',
+      english: "Shows all the commands, you are looking at it now.",
+      portugues: "Mostra todos os comandos, você está olhando eles agora.",
     },
     HELP_USER: {
       english:
-        'Shows data about the user given.' + '\nExample: !h user faker kr',
-      portugues: 'Mostra dados sobre um usuário.\nExemplo: !h user faker br',
+        "Shows data about the user given." + "\nExample: !h user faker kr",
+      portugues: "Mostra dados sobre um usuário.\nExemplo: !h user faker br",
     },
     COMMAND_LANGUAGE: {
-      english: '!h language <language>',
-      portugues: '!h idioma <idioma>',
+      english: "!h language <language>",
+      portugues: "!h idioma <idioma>",
     },
     COMMAND_CHAMPION: {
-      english: '!h champion <champion name> <role>',
-      portugues: '!h campeao <nome do campeao> <função>',
+      english: "!h champion <champion name> <role>",
+      portugues: "!h campeao <nome do campeao> <função>",
     },
     COMMAND_USER: {
-      english: '!h user <name> <server>',
-      portugues: '!h usuario <nome> <servidor>',
+      english: "!h user <name> <server>",
+      portugues: "!h usuario <nome> <servidor>",
     },
     COMMAND_SERVERS: {
-      english: '!h servers',
-      portugues: '!h servidores',
+      english: "!h servers",
+      portugues: "!h servidores",
     },
     COMMAND_FREEWEEK: {
-      english: '!h freeweek',
-      portugues: '!h freeweek',
+      english: "!h freeweek",
+      portugues: "!h freeweek",
     },
     COMMAND_HELP: {
-      english: '!h help',
-      portugues: '!h ajuda',
+      english: "!h help",
+      portugues: "!h ajuda",
     },
     HELP_DESCRIPTION: {
-      english: 'All the commmands explained',
-      portugues: 'Todos os comandos explicados',
+      english: "All the commmands explained",
+      portugues: "Todos os comandos explicados",
     },
     NO_PERMISSION: {
-      english: 'Sorry, but you do not have permission to use this command.',
+      english: "Sorry, but you do not have permission to use this command.",
       portugues:
-        'Desculpe, mas você não tem permissão para utilizar este comando.',
+        "Desculpe, mas você não tem permissão para utilizar este comando.",
     },
     ADD_TO_SERVER: {
-      english: 'Add it to your server',
-      portugues: 'Adicione ao seu servidor',
+      english: "Add it to your server",
+      portugues: "Adicione ao seu servidor",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
-    '': {
-      english: '',
-      portugues: '',
+    "": {
+      english: "",
+      portugues: "",
     },
   },
 };
