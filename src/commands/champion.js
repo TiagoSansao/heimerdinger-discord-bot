@@ -10,7 +10,14 @@ async function getData(champion, role) {
     }`
   );
   const root = parser.parse(data);
-  const championName = root.querySelector("h1").childNodes[0].rawText;
+  let championName = root.querySelector("h1").childNodes[0].rawText;
+
+  championName = championName
+    .split(" ")
+    .map((partOfName) => partOfName[0].toUpperCase() + partOfName.slice(1))
+    .join("");
+  console.log(championName);
+
   const allRunes = root
     .querySelectorAll(".ChampionRuneSmallCHGG__RuneName-sc-1vubct9-5")
     .map((element) => element.childNodes[0].rawText);
@@ -113,5 +120,7 @@ async function getChampion(msg, champion, role) {
 
   msg.channel.send(embed);
 }
+
+getData("masteryi", "jungle");
 
 export default getChampion;
