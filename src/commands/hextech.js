@@ -1,7 +1,7 @@
 import lang from "../controllers/langHandler.js";
 
-async function roulette(msg, championsArray) {
-  let index = Math.round(Math.random() * championsArray.length);
+async function hextech(msg, possibilities) {
+  let index = Math.round(Math.random() * possibilities.length);
   let message = await msg.channel.send(
     "**3** " + lang(msg.guild, "ROULETTE_SECOND")
   );
@@ -16,10 +16,10 @@ async function roulette(msg, championsArray) {
   setTimeout(
     () =>
       message.edit(
-        `${lang(msg.guild, "ROULETTE_FINAL")} **${championsArray[index]}**!`
+        `${lang(msg.guild, "ROULETTE_FINAL")} **${possibilities[index]}**!`
       ),
     3000
   );
 }
 
-export default roulette;
+export default hextech;
