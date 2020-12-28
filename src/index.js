@@ -10,6 +10,7 @@ import getHelp from "./commands/help.js";
 import setLanguage from "./commands/language.js";
 import getRoulette from "./commands/roulette.js";
 import getHextech from "./commands/hextech.js";
+import getAlmostStaticData from "./utils/getAlmostStaticData.js";
 
 import lang, { loadLanguages } from "./controllers/langHandler.js";
 import messageWhenJoin from "./controllers/messageWhenJoin.js";
@@ -18,25 +19,10 @@ const client = new Discord.Client();
 
 const prefix = "!h ";
 
-let champions = {};
-let possibilitiesSkinsAndChampions = [];
-let possibilitiesChampions = [];
-
-axios
-  .get(
-    `http://ddragon.leagueoflegends.com/cdn/10.25.1/data/en_US/championFull.json`
-  )
-  .then((response) => {
-    champions = response.data.data;
-    for (let champion in champions) {
-      possibilitiesSkinsAndChampions.push(champion);
-      possibilitiesChampions.push(champion);
-      champions[champion].skins.forEach((skinObj) => {
-        if (skinObj.name === "default") return;
-        possibilitiesSkinsAndChampions.push(skinObj.name);
-      });
-    }
-  });
+let [
+  possibilitiesChampions,
+  possibilitiesSkinsAndChampions,
+] = await getAlmostStaticData();
 
 client.on("ready", () => {
   client.user.setActivity("!h help | !h language", {
@@ -89,7 +75,8 @@ client.on("message", async (msg) => {
   if (command === "roulette" || command === "roleta")
     return getRoulette(msg, possibilitiesChampions);
 
-  if (command === "hextech") return getHextech(msg, possibilities);
+  if (command === "hextech")
+    return getHextech(msg, possibilitiesSkinsAndChampions);
 
   if (command === "language" || command === "idioma") {
     await setLanguage(msg, args[0], prefix);
