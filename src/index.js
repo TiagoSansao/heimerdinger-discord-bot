@@ -1,5 +1,4 @@
 import Discord from "discord.js";
-import axios from "axios";
 import {} from "dotenv/config.js";
 
 import getFreeWeek from "./commands/freeweek.js";
@@ -22,7 +21,7 @@ const prefix = "!h ";
 let [
   possibilitiesChampions,
   possibilitiesSkinsAndChampions,
-] = await getAlmostStaticData();
+] = getAlmostStaticData();
 
 client.on("ready", () => {
   client.user.setActivity("!h help | !h language", {

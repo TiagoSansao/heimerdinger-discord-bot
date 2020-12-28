@@ -16,10 +16,13 @@ async function hextech(msg, possibilities) {
   setTimeout(
     () =>
       message.edit(
-        `${lang(msg.guild, "ROULETTE_FINAL")} **${possibilities[index]}**!`
+        `${lang(msg.guild, "HEXTECH_FINAL")} **${possibilities[index]}**!`
       ),
     3000
   );
 }
+
+//  Remember to change percentage to real ones, get it from:
+// https://www.riftherald.com/lol-gameplay/2018/2/22/17041132/league-of-legends-loot-box-rates-hextech-crafting-riot-games
 
 export default hextech;

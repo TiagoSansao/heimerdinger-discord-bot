@@ -8,7 +8,7 @@ export default function getAlmostStaticData() {
 
   axios
     .get(
-      `http://ddragon.leagueoflegends.com/cdn/10.25.1/data/${"en_US"}/championFull.json`
+      `http://ddragon.leagueoflegends.com/cdn/10.25.1/data/${"pt_BR"}/championFull.json`
     )
     .then((response) => {
       champions = response.data.data;

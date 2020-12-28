@@ -133,9 +133,9 @@ export default {
       english: "And the random champion is",
       portugues: "E o campeão aleatório selecionado é",
     },
-    "": {
-      english: "",
-      portugues: "",
+    HEXTECH_FINAL: {
+      english: "And the Hextech Chest's prize is: ",
+      portugues: "E o prêmio do baú Hextech é: ",
     },
     "": {
       english: "",
