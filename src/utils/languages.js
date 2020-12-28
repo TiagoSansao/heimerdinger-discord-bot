@@ -125,13 +125,13 @@ export default {
       english: "Add it to your server",
       portugues: "Adicione ao seu servidor",
     },
-    "": {
-      english: "",
-      portugues: "",
+    ROULETTE_SECOND: {
+      english: "second(s) of suspense...",
+      portugues: "segundo(s) de suspense...",
     },
-    "": {
-      english: "",
-      portugues: "",
+    ROULETTE_FINAL: {
+      english: "And the random champion is",
+      portugues: "E o campeão aleatório selecionado é",
     },
     "": {
       english: "",
