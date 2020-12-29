@@ -13,13 +13,11 @@ export default async function getAlmostStaticData() {
     axios.get(new Url("en_US").link),
     axios.get(new Url("pt_BR").link),
   ]).then((response) => {
-    console.log("oi");
     response.forEach((res, i) => {
       possibilitiesSkinsAndChampions.push([]);
       champions = res.data.data;
       for (let champion in champions) {
         if (i === 0) possibilitiesChampions.push(champion);
-        possibilitiesSkinsAndChampions[i].push(champion);
         champions[champion].skins.forEach((skinObj) => {
           if (skinObj.name === "default") return;
           possibilitiesSkinsAndChampions[i].push(skinObj.name);
