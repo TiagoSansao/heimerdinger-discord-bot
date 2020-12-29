@@ -1,6 +1,10 @@
 export default {
   languages: ["english", "portugues"],
   translations: {
+    LANGUAGE_INDEX: {
+      english: "1",
+      portugues: "2",
+    },
     MASTERY_POINTS: {
       english: "Mastery points",
       portugues: "Pontos de maestria",
@@ -136,6 +140,34 @@ export default {
     HEXTECH_FINAL: {
       english: "And the Hextech Chest's prize is: ",
       portugues: "E o prêmio do baú Hextech é: ",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
     },
     "": {
       english: "",

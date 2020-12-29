@@ -18,15 +18,13 @@ const client = new Discord.Client();
 
 const prefix = "!h ";
 
-let [
-  possibilitiesChampions,
-  possibilitiesSkinsAndChampions,
-] = getAlmostStaticData();
+let possiblities;
 
-client.on("ready", () => {
+client.on("ready", async () => {
   client.user.setActivity("!h help | !h language", {
     type: "PLAYING",
   });
+  possiblities = await getAlmostStaticData();
   loadLanguages(client);
   messageWhenJoin(client);
   console.log(`Logged as ${client.user.tag}`);
@@ -72,10 +70,9 @@ client.on("message", async (msg) => {
     return getChampion(msg, args[0], args[1]);
 
   if (command === "roulette" || command === "roleta")
-    return getRoulette(msg, possibilitiesChampions);
+    return getRoulette(msg, possiblities[0]);
 
-  if (command === "hextech")
-    return getHextech(msg, possibilitiesSkinsAndChampions);
+  if (command === "hextech") return getHextech(msg, possiblities);
 
   if (command === "language" || command === "idioma") {
     await setLanguage(msg, args[0], prefix);

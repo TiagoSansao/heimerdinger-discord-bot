@@ -1,29 +1,35 @@
 import axios from "axios";
 
-export default function getAlmostStaticData() {
+export default async function getAlmostStaticData() {
   let champions = [];
   let possibilitiesChampions = [];
   let possibilitiesSkinsAndChampions = [];
-  let possibilitiesSkinsAndChampionsPortuguese = [];
 
   function Url(language) {
     this.link = `http://ddragon.leagueoflegends.com/cdn/10.25.1/data/${language}/championFull.json`;
   }
-  Promise.all([
+
+  await Promise.all([
     axios.get(new Url("en_US").link),
     axios.get(new Url("pt_BR").link),
   ]).then((response) => {
-    response.forEach((res) => {
+    console.log("oi");
+    response.forEach((res, i) => {
+      possibilitiesSkinsAndChampions.push([]);
       champions = res.data.data;
       for (let champion in champions) {
-        possibilitiesSkinsAndChampions.push(champion);
-        possibilitiesChampions.push(champion);
+        if (i === 0) possibilitiesChampions.push(champion);
+        possibilitiesSkinsAndChampions[i].push(champion);
         champions[champion].skins.forEach((skinObj) => {
           if (skinObj.name === "default") return;
-          possibilitiesSkinsAndChampions.push(skinObj.name);
+          possibilitiesSkinsAndChampions[i].push(skinObj.name);
         });
       }
     });
   });
-  return [possibilitiesChampions, possibilitiesSkinsAndChampions];
+  return [
+    possibilitiesChampions,
+    possibilitiesSkinsAndChampions[0],
+    possibilitiesSkinsAndChampions[1],
+  ];
 }

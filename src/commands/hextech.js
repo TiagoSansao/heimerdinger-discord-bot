@@ -1,6 +1,7 @@
 import lang from "../controllers/langHandler.js";
 
 async function hextech(msg, possibilities) {
+  possibilities = possibilities[lang(msg.guild, "LANGUAGE_INDEX")];
   let index = Math.round(Math.random() * possibilities.length);
   let message = await msg.channel.send(
     "**3** " + lang(msg.guild, "ROULETTE_SECOND")
