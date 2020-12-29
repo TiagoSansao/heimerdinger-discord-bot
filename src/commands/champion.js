@@ -8,7 +8,8 @@ async function getData(champion, role) {
     let { data } = await axios.get(
       `${process.env.API_CHAMPIONS}${
         role ? `${champion}/${role}` : `${champion}`
-      }`
+      }`,
+      { headers: { cookie: "i18nextLanguage=pt" } }
     );
     const root = parser.parse(data);
 
