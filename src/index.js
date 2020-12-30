@@ -53,19 +53,21 @@ client.on("message", async (msg) => {
     const embed = new Discord.MessageEmbed();
     embed
       .setColor("#3498db")
-      .setTitle("Name")
+      .setTitle("Hextech chest")
       .setThumbnail("https://i.imgur.com/aEJCdi7.png")
       .setDescription("Server")
       .addFields(
         { name: "solo duo", value: "iron iv", inline: true },
         { name: "flex", value: "iron XV", inline: true }
       )
-      .setTimestamp()
-      .setFooter("Heimerdinger Bot - link");
+      .setImage("")
+      .addField(
+        "Heimerdinger Bot",
+        `[${lang(msg.guild, "ADD_TO_SERVER")}](${process.env.INVITE_LINK})`
+      );
 
     msg.channel.send(embed);
   }
-
   if (command === "champion" || command === "campeao")
     return getChampion(msg, args[0], args[1]);
 
