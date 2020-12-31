@@ -137,6 +137,10 @@ export default {
       english: "And the random champion is",
       portugues: "E o campeão aleatório selecionado é",
     },
+    ROULETTE_TITLE: {
+      english: "Campeão Aleatório",
+      portugues: "Random Champion",
+    },
     HEXTECH_FINAL: {
       english: "And the Hextech Chest's prize is: ",
       portugues: "E o prêmio do baú Hextech é: ",
