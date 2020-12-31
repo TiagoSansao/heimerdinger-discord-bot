@@ -165,6 +165,174 @@ export default {
       english: " + **Bonus Chest** + **Key**",
       portugues: " + **Baú Bônus** + **Chave**",
     },
+    COMMAND_HEXTECH: {
+      english: "!h hextech",
+      portugues: "!h hextech",
+    },
+    HELP_HEXTECH: {
+      english:
+        "It simultes a real hextech chest opening using the officials prizes probabilities",
+      portugues:
+        "Simula o abrimento de um baú hextech verdadeiro, utilizando as probabilidades oficiais",
+    },
+    COMMAND_ROULETTE: {
+      english: "!h roulette",
+      portugues: "!h roleta",
+    },
+    HELP_ROULETTE: {
+      english:
+        "Shows a random champion, every champion has the same probability of being selected.",
+      portugues:
+        "Mostra um campeão aleatório, todo campeão tem a mesma probabilidade de ser selecionado.",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
+    "": {
+      english: "",
+      portugues: "",
+    },
     "": {
       english: "",
       portugues: "",
