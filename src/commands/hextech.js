@@ -11,22 +11,22 @@ async function hextech(msg, possibilities) {
   if (random >= 50 && random <= 75) {
     possibilities = champions;
   } else if (random >= 75 && random <= 85) {
-    possibilities = "A random permanent emote.";
+    possibilities = lang(msg.guild, "HEXTECH_EMOTE");
     emoteWardIcon =
       "https://nexus.leagueoflegends.com/wp-content/uploads/2017/08/LOL_CMS_117_Article_00.jpg";
   } else if (random >= 85 && random <= 96.5) {
-    possibilities = "A Ward Skin Shard + 150 Orange Essence.";
+    possibilities = lang(msg.guild, "HEXTECH_WARD");
     emoteWardIcon =
       "https://www.clipartmax.com/png/middle/283-2835845_victorious-ward-league-of-legends.png";
   } else if (random >= 96.5) {
-    possibilities = "Summoner Icon Shard + 150 Orange Essence.";
+    possibilities = lang(msg.guild, "HEXTECH_ICON");
     emoteWardIcon =
       "https://cdnb.artstation.com/p/assets/images/images/012/033/999/large/thomas-randby-npe-ahri.jpg?1532668669";
   }
   if (randomPlus <= 3.6) {
-    plusDrop = " + **Gemstone**";
+    plusDrop = lang(msg.guild, "HEXTECH_GEMSTONE");
   } else if (randomPlus > 3.6 && randomPlus < 13.6) {
-    plusDrop = " + **Bonus Chest** + **Key**";
+    plusDrop = lang(msg.guild, "HEXTECH_CHEST");
   }
 
   let message = await msg.channel.send(

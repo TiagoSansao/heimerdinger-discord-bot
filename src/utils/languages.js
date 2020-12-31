@@ -141,25 +141,25 @@ export default {
       english: "And the Hextech Chest's prize is: ",
       portugues: "E o prêmio do baú Hextech é: ",
     },
-    "": {
-      english: "",
-      portugues: "",
+    HEXTECH_EMOTE: {
+      english: "A random permanent emote.",
+      portugues: "Um emote aleatório permanente.",
     },
-    "": {
-      english: "",
-      portugues: "",
+    HEXTECH_WARD: {
+      english: "A Ward Skin Shard + 150 Orange Essence.",
+      portugues: "Um fragmento de skin de ward + 150 essências laranjas.",
     },
-    "": {
-      english: "",
-      portugues: "",
+    HEXTECH_ICON: {
+      english: "Summoner Icon Shard + 150 Orange Essence.",
+      portugues: "Fragmento de ìcone de invocador + 150 essências laranjas.",
     },
-    "": {
-      english: "",
-      portugues: "",
+    HEXTECH_GEMSTONE: {
+      english: " + **Gemstone**",
+      portugues: " + **Gema**",
     },
-    "": {
-      english: "",
-      portugues: "",
+    HEXTECH_CHEST: {
+      english: " + **Bonus Chest** + **Key**",
+      portugues: " + **Baú Bônus** + **Chave**",
     },
     "": {
       english: "",
