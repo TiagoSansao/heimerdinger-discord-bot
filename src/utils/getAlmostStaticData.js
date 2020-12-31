@@ -17,10 +17,19 @@ export default async function getAlmostStaticData() {
       possibilitiesSkinsAndChampions.push([]);
       champions = res.data.data;
       for (let champion in champions) {
-        if (i === 0) possibilitiesChampions.push(champion);
+        if (i === 0)
+          possibilitiesChampions.push({
+            championName: champion,
+            name: champion,
+            number: 0,
+          });
         champions[champion].skins.forEach((skinObj) => {
           if (skinObj.name === "default") return;
-          possibilitiesSkinsAndChampions[i].push(skinObj.name);
+          possibilitiesSkinsAndChampions[i].push({
+            name: skinObj.name,
+            number: skinObj.num,
+            championName: champion,
+          });
         });
       }
     });
