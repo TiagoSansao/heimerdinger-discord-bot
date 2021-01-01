@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { Emoji } from "discord.js";
 import {} from "dotenv/config.js";
 
 import getFreeWeek from "./commands/freeweek.js";
@@ -68,6 +68,7 @@ client.on("message", async (msg) => {
 
     msg.channel.send(embed);
   }
+
   if (command === "champion" || command === "campeao")
     return getChampion(msg, args[0], args[1]);
 
