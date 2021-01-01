@@ -2,6 +2,7 @@ import axios from "axios";
 import parser from "node-html-parser";
 import { MessageEmbed } from "discord.js";
 import lang from "../controllers/langHandler.js";
+import getEmoji from "../utils/getEmoji.js";
 
 async function getData(champion, role) {
   try {
@@ -75,7 +76,8 @@ async function getData(champion, role) {
   }
 }
 
-async function getChampion(msg, champion, role) {
+async function getChampion(msg, champion, role, cache) {
+  getEmoji("Precision", cache);
   if (!champion || !role)
     return msg.channel.send(lang(msg.guild, "CHAMPION_BAD_USAGE"));
   const data = await getData(champion.replace("_", ""), role);

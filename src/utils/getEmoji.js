@@ -1,6 +1,4 @@
-function getEmote(emojiName) {
-  const emote = client.emojis.cache.find((emoji) => emoji.name === emojiName);
-  console.log(emote.toString());
-  console.log(emote);
+export default function getEmote(emojiName, cache) {
+  const emote = cache.find((emoji) => emoji.name === emojiName);
   return emote.toString();
 }

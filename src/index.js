@@ -70,7 +70,7 @@ client.on("message", async (msg) => {
   }
 
   if (command === "champion" || command === "campeao")
-    return getChampion(msg, args[0], args[1]);
+    return getChampion(msg, args[0], args[1], client.emojis.cache);
 
   if (command === "roulette" || command === "roleta")
     return getRoulette(msg, possiblities[0]);
