@@ -9,8 +9,7 @@ async function getData(champion, role) {
     let { data } = await axios.get(
       `${process.env.API_CHAMPIONS}${
         role ? `${champion}/${role}` : `${champion}`
-      }`,
-      { headers: { cookie: "i18nextLanguage=pt" } }
+      }`
     );
     const root = parser.parse(data);
 
@@ -77,12 +76,12 @@ async function getData(champion, role) {
 }
 
 async function getChampion(msg, champion, role, cache) {
-  getEmoji("Precision", cache);
   if (!champion || !role)
     return msg.channel.send(lang(msg.guild, "CHAMPION_BAD_USAGE"));
   const data = await getData(champion.replace("_", ""), role);
   if (data === 404)
     return msg.channel.send(lang(msg.guild, "CHAMPION_BAD_USAGE"));
+  console.log(data.runes[2]);
   const embed = new MessageEmbed();
   embed
     .setColor("#3498db")
@@ -96,23 +95,45 @@ async function getChampion(msg, champion, role, cache) {
     .setThumbnail(data.iconUrl)
     .addFields(
       {
-        name: "Runes:                        " + "\n\u200B",
-        value: `**${data.runes[0].shift()}**\n${data.runes[0].join("\n")}`,
+        name:
+          getEmoji("RunesIcon", cache) +
+          " Runes:                        " +
+          "\n\u200B",
+        value:
+          `**${getEmoji(
+            data.runes[0][0],
+            cache
+          )} ${data.runes[0].shift()}**\n` +
+          data.runes[0]
+            .map((rune) => `${getEmoji(rune, cache)} ${rune}`)
+            .join("\n"),
         inline: true,
       },
       {
         name: "\u200B                              " + "\n\u200B",
-        value: `**${data.runes[1].shift()}** \n${data.runes[1].join("\n")}`,
+        value:
+          `**${getEmoji(
+            data.runes[1][0],
+            cache
+          )} ${data.runes[1].shift()}**\n` +
+          data.runes[1]
+            .map((rune) => `${getEmoji(rune, cache)} ${rune}`)
+            .join("\n"),
         inline: true,
       },
       {
-        name: "\u200B                              \n \u200B \nAttributes",
-        value: `${data.runes[2].join("\n")}` + "\n\u200B" + "\n\u200B",
+        name: "\u200B                              \n \u200B \n \u200B \n",
+        value:
+          data.runes[2]
+            .map((rune) => `${getEmoji(rune, cache)} ${rune}`)
+            .join("\n") +
+          "\n\u200B" +
+          "\n\u200B",
         inline: true,
       },
       {
         name: "Spells",
-        value: `${data.spells.join("\n")}`,
+        value: data.spells.map((spell) => getEmoji(spell, cache)).join(" "),
         inline: true,
       },
       {
@@ -130,11 +151,7 @@ async function getChampion(msg, champion, role, cache) {
       "Heimerdinger Bot",
       `[${lang(msg.guild, "ADD_TO_SERVER")}](${process.env.INVITE_LINK})`
     );
-  console.log("salve");
 
   msg.channel.send(embed);
 }
-
-getData("master yi", "jungle");
-
 export default getChampion;
