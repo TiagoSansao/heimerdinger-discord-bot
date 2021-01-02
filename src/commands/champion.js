@@ -56,7 +56,9 @@ async function getData(champion, role) {
       )
       .forEach((ability, index) => {
         if (index === 1 || (index === 2) | (index === 3)) {
-          skillsOrder.push(ability.childNodes[0].rawText);
+          skillsOrder.push(
+            `:regional_indicator_${ability.childNodes[0].rawText.toLowerCase()}:`
+          );
         }
       });
 
