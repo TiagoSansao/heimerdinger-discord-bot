@@ -13,18 +13,20 @@ import getAlmostStaticData from "./utils/getAlmostStaticData.js";
 
 import lang, { loadLanguages } from "./controllers/langHandler.js";
 import messageWhenJoin from "./controllers/messageWhenJoin.js";
+import getAssets from "./controllers/getAssets.js";
 
 const client = new Discord.Client();
 
 const prefix = "!h ";
 
-let possiblities;
+let possiblities, emojiCache;
 
 client.on("ready", async () => {
   client.user.setActivity("!h help | !h language", {
     type: "PLAYING",
   });
   possiblities = await getAlmostStaticData();
+  emojiCache = await getAssets(client.guilds);
   loadLanguages(client);
   messageWhenJoin(client);
   console.log(`Logged as ${client.user.tag}`);
@@ -70,7 +72,7 @@ client.on("message", async (msg) => {
   }
 
   if (command === "champion" || command === "campeao")
-    return getChampion(msg, args[0], args[1], client.emojis.cache);
+    return getChampion(msg, args[0], args[1], emojiCache);
 
   if (command === "roulette" || command === "roleta")
     return getRoulette(msg, possiblities[0]);

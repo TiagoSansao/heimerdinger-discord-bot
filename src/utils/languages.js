@@ -45,7 +45,7 @@ export default {
       portugues: "Informação sobre",
     },
     CHAMPION_DESCRIPTION_2: {
-      english: "the",
+      english: "at the",
       portugues: "na função de",
     },
     LANGUAGE_ERROR: {

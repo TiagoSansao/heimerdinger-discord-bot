@@ -1,3 +1,5 @@
-let array = [];
-array[2] = "salve";
-console.log(array);
+let nested = [2, [40, 30]];
+let normal = [4, 9];
+let newArr = [];
+newArr.push(...nested, normal);
+console.log(newArr);
