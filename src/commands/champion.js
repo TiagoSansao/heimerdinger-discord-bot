@@ -1,8 +1,8 @@
-import axios from "axios";
-import parser from "node-html-parser";
-import { MessageEmbed } from "discord.js";
-import lang from "../controllers/langHandler.js";
-import getEmoji from "../utils/getEmoji.js";
+import axios from 'axios';
+import parser from 'node-html-parser';
+import { MessageEmbed } from 'discord.js';
+import lang from '../controllers/langHandler.js';
+import getEmoji from '../utils/getEmoji.js';
 
 async function getData(champion, role) {
   try {
@@ -13,17 +13,17 @@ async function getData(champion, role) {
     );
     const root = parser.parse(data);
 
-    let championName = root.querySelector("h1").childNodes[0].rawText;
+    let championName = root.querySelector('h1').childNodes[0].rawText;
     championName = championName
-      .split(" ")
+      .split(' ')
       .map((partOfName) => partOfName[0].toUpperCase() + partOfName.slice(1))
-      .join("");
+      .join('');
 
     const allRunes = root
-      .querySelectorAll(".ChampionRuneSmallCHGG__RuneName-sc-1vubct9-5")
+      .querySelectorAll('.ChampionRuneSmallCHGG__RuneName-sc-1vubct9-5')
       .map((element) => element.childNodes[0].rawText);
 
-    let roleSite = root.querySelector(".ripples.sc-jDwBTQ.gctzUa");
+    let roleSite = root.querySelector('.ripples.sc-jDwBTQ.gctzUa');
     roleSite = roleSite.childNodes[0].childNodes[0].rawText;
 
     let runes = [[], [], []];
@@ -38,7 +38,7 @@ async function getData(champion, role) {
     });
 
     const spells = root
-      .querySelectorAll("img.sc-fONwsr.bsxfkk")
+      .querySelectorAll('img.sc-fONwsr.bsxfkk')
       .map((spell) => {
         return spell.rawAttrs.match(
           /&lt;spellname&gt;([a-z]+)&lt;\/spellname&gt;/i
@@ -46,13 +46,13 @@ async function getData(champion, role) {
       });
 
     const winRate = root.querySelector(
-      "div.shared__StatValue-sc-1nek54v-0.jLqjzk"
+      'div.shared__StatValue-sc-1nek54v-0.jLqjzk'
     ).childNodes[0].rawText;
 
     let skillsOrder = [];
     root
       .querySelectorAll(
-        "p.typography__Caption-sc-1mpsx83-11.typography__CaptionBold-sc-1mpsx83-12.dwtPBh"
+        'p.typography__Caption-sc-1mpsx83-11.typography__CaptionBold-sc-1mpsx83-12.dwtPBh'
       )
       .forEach((ability, index) => {
         if (index === 1 || (index === 2) | (index === 3)) {
@@ -64,7 +64,7 @@ async function getData(champion, role) {
 
     const championData = {
       name: championName,
-      role: roleSite.replace("role-", "").toUpperCase(),
+      role: roleSite.replace('role-', '').toUpperCase(),
       runes: runes,
       spells: [spells[0], spells[1]],
       winRate: winRate,
@@ -79,28 +79,29 @@ async function getData(champion, role) {
 
 async function getChampion(msg, champion, role, cache) {
   if (!champion || !role)
-    return msg.channel.send(lang(msg.guild, "CHAMPION_BAD_USAGE"));
-  const data = await getData(champion.replace("_", ""), role);
+    return msg.channel.send(lang(msg.guild, 'CHAMPION_BAD_USAGE'));
+  const data = await getData(champion.replace('_', ''), role);
   if (data === 404)
-    return msg.channel.send(lang(msg.guild, "CHAMPION_BAD_USAGE"));
+    return msg.channel.send(lang(msg.guild, 'CHAMPION_BAD_USAGE'));
   console.log(data.spells);
   const embed = new MessageEmbed();
   embed
-    .setColor("#3498db")
-    .setTitle(data.name + lang(msg.guild, "CHAMPION_TITLE"))
+    .setColor('#3498db')
+    .setURL('https://heimerdingerbot.github.io/')
+    .setTitle(data.name + lang(msg.guild, 'CHAMPION_TITLE'))
     .setDescription(
-      `${lang(msg.guild, "CHAMPION_DESCRIPTION_1")} ${data.name} ${lang(
+      `${lang(msg.guild, 'CHAMPION_DESCRIPTION_1')} ${data.name} ${lang(
         msg.guild,
-        "CHAMPION_DESCRIPTION_2"
+        'CHAMPION_DESCRIPTION_2'
       )} **${data.role}**\n\u200B\n\u200B`
     )
     .setThumbnail(data.iconUrl)
     .addFields(
       {
         name:
-          getEmoji("RunesIcon", cache) +
-          " Runes:                        " +
-          "\n\u200B",
+          getEmoji('RunesIcon', cache) +
+          ' Runes:                        ' +
+          '\n\u200B',
         value:
           `**${getEmoji(
             data.runes[0][0],
@@ -108,11 +109,11 @@ async function getChampion(msg, champion, role, cache) {
           )} ${data.runes[0].shift()}**\n` +
           data.runes[0]
             .map((rune) => `${getEmoji(rune, cache)} ${rune}`)
-            .join("\n"),
+            .join('\n'),
         inline: true,
       },
       {
-        name: "\u200B                              " + "\n\u200B",
+        name: '\u200B                              ' + '\n\u200B',
         value:
           `**${getEmoji(
             data.runes[1][0],
@@ -120,38 +121,38 @@ async function getChampion(msg, champion, role, cache) {
           )} ${data.runes[1].shift()}**\n` +
           data.runes[1]
             .map((rune) => `${getEmoji(rune, cache)} ${rune}`)
-            .join("\n"),
+            .join('\n'),
         inline: true,
       },
       {
-        name: "\u200B                              \n \u200B \n \u200B \n",
+        name: '\u200B                              \n \u200B \n \u200B \n',
         value:
           data.runes[2]
             .map((rune) => `${getEmoji(rune, cache)} ${rune}`)
-            .join("\n") +
-          "\n\u200B" +
-          "\n\u200B",
+            .join('\n') +
+          '\n\u200B' +
+          '\n\u200B',
         inline: true,
       },
       {
-        name: "Spells",
-        value: data.spells.map((spell) => getEmoji(spell, cache)).join(" "),
+        name: 'Spells',
+        value: data.spells.map((spell) => getEmoji(spell, cache)).join(' '),
         inline: true,
       },
       {
-        name: "Skills order",
-        value: `${data.skillsOrder.join(" -> ")}`,
+        name: 'Skills order',
+        value: `${data.skillsOrder.join(' -> ')}`,
         inline: true,
       },
       {
-        name: "\u200B" + "\n\u200B",
-        value: "\u200B" + "\n\u200B",
+        name: '\u200B' + '\n\u200B',
+        value: '\u200B' + '\n\u200B',
         inline: true,
       }
     )
     .addField(
-      "Heimerdinger Bot",
-      `[${lang(msg.guild, "ADD_TO_SERVER")}](${process.env.INVITE_LINK})`
+      'Heimerdinger Bot',
+      `[${lang(msg.guild, 'ADD_TO_SERVER')}](${process.env.INVITE_LINK})`
     );
 
   msg.channel.send(embed);

@@ -19,6 +19,7 @@ async function getFreeWeek(champions, msg) {
   embed
     .setColor('#3498db')
     .setTitle('Free Week')
+    .setURL('https://heimerdingerbot.github.io/')
     .setDescription(lang(msg.guild, 'FREEWEEK_DESCRIPTION'))
     .setThumbnail('https://i.imgur.com/aEJCdi7.png')
     .addField('Champions', FWChampions.join(', '))

@@ -75,6 +75,7 @@ async function user(args, champions, msg) {
     .setColor('#3498db')
     .setTitle(userData.name)
     .setThumbnail(imgUrl)
+    .setURL('https://heimerdingerbot.github.io/')
     .addField('Level', userData.summonerLevel, true)
     .addField('Server', userData.server, true)
     .addField('\u200B', '\u200B\n\u200B', true)
