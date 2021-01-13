@@ -2,6 +2,7 @@ import axios from 'axios';
 import discord from 'discord.js';
 import getChampionName from '../utils/getChampionName.js';
 import getRegionUrl from '../utils/getRegionUrl.js';
+import lang from '../controllers/langHandler.js';
 import {} from 'dotenv/config.js';
 
 async function getUser(args, champions) {
@@ -74,6 +75,7 @@ async function user(args, champions, msg) {
     .setColor('#3498db')
     .setTitle(userData.name)
     .setThumbnail(imgUrl)
+    .setURL('https://heimerdingerbot.github.io/')
     .addField('Level', userData.summonerLevel, true)
     .addField('Server', userData.server, true)
     .addField('\u200B', '\u200B\n\u200B', true)
@@ -132,7 +134,10 @@ async function user(args, champions, msg) {
       { name: 'Mastery points', value: champ[2], inline: true }
     );
   });
-  embed.setTimestamp().setFooter('Heimerdinger Bot - link');
+  embed.addField(
+    'Heimerdinger Bot',
+    `[${lang(msg.guild, 'ADD_TO_SERVER')}](${process.env.INVITE_LINK})`
+  );
   msg.channel.send(embed);
 }
 
