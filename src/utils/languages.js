@@ -1,365 +1,365 @@
 export default {
-  languages: ["english", "portugues"],
+  languages: ['english', 'portugues'],
   translations: {
     LANGUAGE_INDEX: {
-      english: "1",
-      portugues: "2",
+      english: '1',
+      portugues: '2',
     },
     MASTERY_POINTS: {
-      english: "Mastery points",
-      portugues: "Pontos de maestria",
+      english: 'Mastery points',
+      portugues: 'Pontos de maestria',
     },
     SERVERS_ACRONYMS: {
-      english: "Servers acronyms",
-      portugues: "Abreviações dos servidores",
+      english: 'Servers acronyms',
+      portugues: 'Abreviações dos servidores',
     },
     SERVERS_DESCRIPTION: {
-      english: "Use them to specify a region when necessary",
-      portugues: "Use elas para especificar uma região quando necessário.",
+      english: 'Use them to specify a region when necessary',
+      portugues: 'Use elas para especificar uma região quando necessário.',
     },
     SOMETHING_WENT_WRONG: {
-      english: "Something went wrong, try again later.",
-      portugues: "Algo deu errado, tente mais tarde novamente.",
+      english: 'Something went wrong, try again later.',
+      portugues: 'Algo deu errado, tente mais tarde novamente.',
     },
     FREEWEEK_DESCRIPTION: {
-      english: "Champions to play for free during this week.",
-      portugues: "Campeões para jogar de graça durante a semana.",
+      english: 'Champions to play for free during this week.',
+      portugues: 'Campeões para jogar de graça durante a semana.',
     },
     COMMAND_NOT_FOUND: {
-      english: "Command not found, you can see my commands using !h help",
+      english: 'Command not found, you can see my commands using !h help',
       portugues:
-        "Comando não encontrado, você pode ver meus commandos usando !h help",
+        'Comando não encontrado, você pode ver meus commandos usando !h help',
     },
     CHAMPION_BAD_USAGE: {
       english:
-        "Bad usage of the comand.\nStructure: !h champion <champion name> <role>  ||  Example: !h champion master_yi jungle",
+        'Bad usage of the comand.\nStructure: !h champion <champion name> <role>  ||  Example: !h champion master_yi jungle',
       portugues:
-        "Mau uso do comando. \nEstrutura: !h champion <nome do campeão> <função>   | |   Exemplo: !h champion master_yi jungle",
+        'Mau uso do comando. \nEstrutura: !h champion <nome do campeão> <função>   | |   Exemplo: !h champion master_yi jungle',
     },
     CHAMPION_TITLE: {
-      english: " Recommended Build",
-      portugues: " Build Recomendada",
+      english: ' Recommended Build',
+      portugues: ' Build Recomendada',
     },
     CHAMPION_DESCRIPTION_1: {
-      english: "Information about",
-      portugues: "Informação sobre",
+      english: 'Information about',
+      portugues: 'Informação sobre',
     },
     CHAMPION_DESCRIPTION_2: {
-      english: "at the",
-      portugues: "na função de",
+      english: 'at the',
+      portugues: 'na função de',
     },
     LANGUAGE_ERROR: {
       english:
-        "You need to specify a language!\nExample: !h language portugues",
+        'You need to specify a language!\nExample: !h language portugues',
       portugues:
-        "Você precisa especificar uma linguagem!\nExemplo: !h language portugues",
+        'Você precisa especificar uma linguagem!\nExemplo: !h language portugues',
     },
     LANGUAGE_NOT_SUPPORTED: {
-      english: "This language is not supported!",
-      portugues: "Não há tradução para este idioma.",
+      english: 'This language is not supported!',
+      portugues: 'Não há tradução para este idioma.',
     },
     LANGUAGE_CHANGED: {
-      english: "Language changed successfully!",
-      portugues: "Idioma trocado com sucesso!",
+      english: 'Language changed successfully!',
+      portugues: 'Idioma trocado com sucesso!',
     },
     HELP_LANGUAGE: {
       english:
         "Change bot's language in the server, available langs: Português and English",
       portugues:
-        "Muda o idioma do bot dentro do servidor, idiomas disponíveis: Português e English ",
+        'Muda o idioma do bot dentro do servidor, idiomas disponíveis: Português e English ',
     },
     HELP_CHAMPION: {
       english:
-        "Shows data about a champion\nExample: !h champion master_yi jungle",
+        'Shows data about a champion\nExample: !h champion master_yi jungle',
       portugues:
-        "Mostra dados de um campeão\nExemplo: !h champion master_yi jungle",
+        'Mostra dados de um campeão\nExemplo: !h campeao master_yi jungle',
     },
     HELP_FREEWEEK: {
-      english: "Shows all the champions that are free to play this week.",
+      english: 'Shows all the champions that are free to play this week',
       portugues:
-        "Mostra todos os campeões que estão de graça para jogar durante esta semana.",
+        'Mostra todos os campeões que estão de graça para jogar durante esta semana',
     },
     HELP_SERVERS: {
-      english: "Shows all the servers acronyms.",
-      portugues: "Mostra todas as abreviações dos servidores.",
+      english: 'Shows all the servers acronyms',
+      portugues: 'Mostra todas as abreviações dos servidores',
     },
     HELP_HELP: {
-      english: "Shows all the commands, you are looking at it now.",
-      portugues: "Mostra todos os comandos, você está olhando eles agora.",
+      english: 'Shows all the commands, you are looking at it now',
+      portugues: 'Mostra todos os comandos, você está olhando eles agora',
     },
     HELP_USER: {
       english:
-        "Shows data about the user given." + "\nExample: !h user faker kr",
-      portugues: "Mostra dados sobre um usuário.\nExemplo: !h user faker br",
+        'Shows data about the user given' + '\nExample: !h user faker br',
+      portugues: 'Mostra dados sobre um usuário\nExemplo: !h user faker br',
     },
     COMMAND_LANGUAGE: {
-      english: "!h language <language>",
-      portugues: "!h idioma <idioma>",
+      english: '!h language <language>',
+      portugues: '!h idioma <idioma>',
     },
     COMMAND_CHAMPION: {
-      english: "!h champion <champion name> <role>",
-      portugues: "!h campeao <nome do campeao> <função>",
+      english: '!h champion <champion name> <role>',
+      portugues: '!h campeao <nome do campeao> <função>',
     },
     COMMAND_USER: {
-      english: "!h user <name> <server>",
-      portugues: "!h usuario <nome> <servidor>",
+      english: '!h user <name> <server>',
+      portugues: '!h usuario <nome> <servidor>',
     },
     COMMAND_SERVERS: {
-      english: "!h servers",
-      portugues: "!h servidores",
+      english: '!h servers',
+      portugues: '!h servidores',
     },
     COMMAND_FREEWEEK: {
-      english: "!h freeweek",
-      portugues: "!h freeweek",
+      english: '!h freeweek',
+      portugues: '!h freeweek',
     },
     COMMAND_HELP: {
-      english: "!h help",
-      portugues: "!h ajuda",
+      english: '!h help',
+      portugues: '!h ajuda',
     },
     HELP_DESCRIPTION: {
-      english: "All the commmands explained",
-      portugues: "Todos os comandos explicados",
+      english: 'All the commmands explained',
+      portugues: 'Todos os comandos explicados',
     },
     NO_PERMISSION: {
-      english: "Sorry, but you do not have permission to use this command.",
+      english: 'Sorry, but you do not have permission to use this command.',
       portugues:
-        "Desculpe, mas você não tem permissão para utilizar este comando.",
+        'Desculpe, mas você não tem permissão para utilizar este comando.',
     },
     ADD_TO_SERVER: {
-      english: "Add it to your server",
-      portugues: "Adicione ao seu servidor",
+      english: 'Add it to your server',
+      portugues: 'Adicione ao seu servidor',
     },
     ROULETTE_SECOND: {
-      english: "second(s) of suspense...",
-      portugues: "segundo(s) de suspense...",
+      english: 'second(s) of suspense...',
+      portugues: 'segundo(s) de suspense...',
     },
     ROULETTE_FINAL: {
-      english: "And the random champion is",
-      portugues: "E o campeão aleatório selecionado é",
+      english: 'And the random champion is',
+      portugues: 'E o campeão aleatório selecionado é',
     },
     ROULETTE_TITLE: {
-      english: "Campeão Aleatório",
-      portugues: "Random Champion",
+      english: 'Campeão Aleatório',
+      portugues: 'Random Champion',
     },
     HEXTECH_FINAL: {
       english: "And the Hextech Chest's prize is: ",
-      portugues: "E o prêmio do baú Hextech é: ",
+      portugues: 'E o prêmio do baú Hextech é: ',
     },
     HEXTECH_EMOTE: {
-      english: "A random permanent emote.",
-      portugues: "Um emote aleatório permanente.",
+      english: 'A random permanent emote.',
+      portugues: 'Um emote aleatório permanente.',
     },
     HEXTECH_WARD: {
-      english: "A Ward Skin Shard + 150 Orange Essence.",
-      portugues: "Um fragmento de skin de ward + 150 essências laranjas.",
+      english: 'A Ward Skin Shard + 150 Orange Essence.',
+      portugues: 'Um fragmento de skin de ward + 150 essências laranjas.',
     },
     HEXTECH_ICON: {
-      english: "Summoner Icon Shard + 150 Orange Essence.",
-      portugues: "Fragmento de ìcone de invocador + 150 essências laranjas.",
+      english: 'Summoner Icon Shard + 150 Orange Essence.',
+      portugues: 'Fragmento de ìcone de invocador + 150 essências laranjas.',
     },
     HEXTECH_GEMSTONE: {
-      english: " + **Gemstone**",
-      portugues: " + **Gema**",
+      english: ' + **Gemstone**',
+      portugues: ' + **Gema**',
     },
     HEXTECH_CHEST: {
-      english: " + **Bonus Chest** + **Key**",
-      portugues: " + **Baú Bônus** + **Chave**",
+      english: ' + **Bonus Chest** + **Key**',
+      portugues: ' + **Baú Bônus** + **Chave**',
     },
     COMMAND_HEXTECH: {
-      english: "!h hextech",
-      portugues: "!h hextech",
+      english: '!h hextech',
+      portugues: '!h hextech',
     },
     HELP_HEXTECH: {
       english:
-        "It simultes a real hextech chest opening using the officials prizes probabilities",
+        'It simultes a real hextech chest opening using the officials prizes probabilities',
       portugues:
-        "Simula o abrimento de um baú hextech verdadeiro, utilizando as probabilidades oficiais",
+        'Simula o abrimento de um baú hextech verdadeiro, utilizando as probabilidades oficiais',
     },
     COMMAND_ROULETTE: {
-      english: "!h roulette",
-      portugues: "!h roleta",
+      english: '!h roulette',
+      portugues: '!h roleta',
     },
     HELP_ROULETTE: {
       english:
-        "Shows a random champion, every champion has the same probability of being selected.",
+        'Shows a random champion, every champion has the same probability of being selected',
       portugues:
-        "Mostra um campeão aleatório, todo campeão tem a mesma probabilidade de ser selecionado.",
+        'Mostra um campeão aleatório, todo campeão tem a mesma probabilidade de ser selecionado',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
-    "": {
-      english: "",
-      portugues: "",
+    '': {
+      english: '',
+      portugues: '',
     },
   },
 };
