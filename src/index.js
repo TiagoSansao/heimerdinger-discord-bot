@@ -44,22 +44,28 @@ client.on('message', async (msg) => {
   const helpAlias = ['help', 'ajuda', 'commands', 'comandos'];
   if (helpAlias.includes(command)) return getHelp(msg, prefix);
 
-  if (command === 'freeweek') return getFreeWeek(champions, msg);
+  const freeweekAlias = ['freeweek', 'fw'];
+  if (freeweekAlias.includes(command)) return getFreeWeek(champions, msg);
 
-  if (command === 'user' || command === 'usuario')
+  const userAlias = ['user', 'usuario', 'player'];
+  if (userAlias.includes(command))
     return getUser([args[0], args[1]], champions, msg);
 
-  if (command === 'servers' || command === 'servidores') return getServers(msg);
+  const serverAlias = ['servers', 'servidores', 'regions', 'regioes'];
+  if (serverAlias.includes(command)) return getServers(msg);
 
-  if (command === 'champion' || command === 'campeao')
+  const championAlias = ['campeao', 'champion'];
+  if (championAlias.includes(command))
     return getChampion(msg, args[0], args[1], emojiCache);
 
-  if (command === 'roulette' || command === 'roleta')
-    return getRoulette(msg, possiblities[0]);
+  const rouletteAlias = ['roulette', 'roleta'];
+  if (rouletteAlias.includes(command)) return getRoulette(msg, possiblities[0]);
 
-  if (command === 'hextech') return getHextech(msg, possiblities);
+  const hextechAlias = ['hextech'];
+  if (hextechAlias.includes(command)) return getHextech(msg, possiblities);
 
-  if (command === 'language' || command === 'idioma') {
+  const languageAlias = ['language', 'idioma'];
+  if (languageAlias.includes(command)) {
     await setLanguage(msg, args[0], prefix);
     await loadLanguages(client);
     return;
