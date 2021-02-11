@@ -45,11 +45,11 @@ client.on('message', async (msg) => {
   if (helpAlias.includes(command)) return getHelp(msg, prefix);
 
   const freeweekAlias = ['freeweek', 'fw'];
-  if (freeweekAlias.includes(command)) return getFreeWeek(champions, msg);
+  if (freeweekAlias.includes(command)) return getFreeWeek(possiblities[0], msg);
 
   const userAlias = ['user', 'usuario', 'player'];
   if (userAlias.includes(command))
-    return getUser([args[0], args[1]], champions, msg);
+    return getUser([args[0], args[1]], possiblities[0], msg);
 
   const serverAlias = ['servers', 'servidores', 'regions', 'regioes'];
   if (serverAlias.includes(command)) return getServers(msg);

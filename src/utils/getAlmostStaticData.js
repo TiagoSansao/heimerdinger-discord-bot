@@ -22,6 +22,7 @@ export default async function getAlmostStaticData() {
             championName: champion,
             name: champion,
             number: 0,
+            key: champions[champion].key
           });
         champions[champion].skins.forEach((skinObj) => {
           if (skinObj.name === "default") return;
