@@ -12,8 +12,6 @@ async function getFreeWeek(champions, msg) {
     .catch(() => msg.channel.send(lang(msg.guild, 'SOMETHING_WENT_WRONG')));
   if (!response)
     return msg.channel.send(lang(msg.guild, 'SOMETHING_WENT_WRONG'));
-  console.log(champions);
-  console.log(response.data);
   const FWChampions = response.data.freeChampionIds.map((id) =>
     getChampionName(id, champions)
   );

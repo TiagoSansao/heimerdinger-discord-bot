@@ -5,6 +5,10 @@ export default {
       english: '1',
       portugues: '2',
     },
+    REGION: {
+      english: 'NA',
+      portugues: 'BR'
+    },
     MASTERY_POINTS: {
       english: 'Mastery points',
       portugues: 'Pontos de maestria',
@@ -185,9 +189,9 @@ export default {
       portugues:
         'Mostra um campeão aleatório, todo campeão tem a mesma probabilidade de ser selecionado',
     },
-    '': {
-      english: '',
-      portugues: '',
+    USER_NOT_FOUND: {
+      english: "was not found, did you especify the region in case it wasn't NA? Get help with !h help.",
+      portugues: 'não foi encontrado, você especificou a região do usuário caso ela não seja a do idioma do servidor? Receba ajuda com !h ajuda.',
     },
     '': {
       english: '',

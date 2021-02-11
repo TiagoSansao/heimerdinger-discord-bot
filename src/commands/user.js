@@ -67,8 +67,11 @@ async function user(args, champions, msg) {
     return msg.channel.send(
       `${msg.author}, you need to give a name and a server (server is optional) \nStructure: ${prefix}user <name> <server>   |   Example: ${prefix}user faker KR`
     );
+  if (!args[1]) {
+    args[1] = lang(msg.guild, "REGION");
+  }
   const userData = await getUser(args, champions);
-  if (!userData) return msg.channel.send(`User ${args[0]} was not found!`);
+  if (!userData) return msg.channel.send(`${args[0]} ${lang(msg.guild, "USER_NOT_FOUND")}`);
   const imgUrl = `http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/${userData.profileIconId}.png`;
   const embed = new discord.MessageEmbed();
   embed

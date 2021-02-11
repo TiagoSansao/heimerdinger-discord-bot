@@ -83,7 +83,6 @@ async function getChampion(msg, champion, role, cache) {
   const data = await getData(champion.replace('_', ''), role);
   if (data === 404)
     return msg.channel.send(lang(msg.guild, 'CHAMPION_BAD_USAGE'));
-  console.log(data.spells);
   const embed = new MessageEmbed();
   embed
     .setColor('#3498db')
